@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import apiInstance from "../api/axiosInstance";
-import api_base_url from "../api/constant";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Core Swiper styles
 import "swiper/css/navigation"; // Navigation buttons

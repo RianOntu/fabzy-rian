@@ -1,5 +1,6 @@
 import Banner from "./components/Banner";
 import Featured from "./components/Featured";
+import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 
@@ -10,7 +11,8 @@ export default function Home() {
       <Banner />
       <Welcome />
       <div className="paralax">
-        <Featured/>
+        <Featured />
+        <Grid />
       </div>
     </>
   );
