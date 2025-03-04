@@ -44,6 +44,12 @@ function ClientReviews() {
                     unchanged. It was popularised.
                   </p>
                 </div>
+                <div className="flex flex-col mt-[20px]">
+                  <h3 className="font-semibold text-lg text-center">
+                    UT TELLER
+                  </h3>
+                  <p className="text-md text-center mt-3">Iphone Developer</p>
+                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -64,6 +70,12 @@ function ClientReviews() {
                     but also into electronic typesetting, remaining essentially
                     unchanged. It was popularised.
                   </p>
+                </div>
+                <div className="flex flex-col mt-[20px]">
+                  <h3 className="font-semibold text-lg text-center">
+                    UT TELLER
+                  </h3>
+                  <p className="text-md text-center mt-3">Iphone Developer</p>
                 </div>
               </div>
             </SwiperSlide>
