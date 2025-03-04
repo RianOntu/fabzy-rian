@@ -1,4 +1,5 @@
 import Banner from "./components/Banner";
+import ClientReviews from "./components/ClientReviews";
 import Featured from "./components/Featured";
 import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
@@ -12,8 +13,12 @@ export default function Home() {
       <Welcome />
       <div className="paralax">
         <Featured />
-        <Grid />
       </div>
+      <Grid />
+      <div className="paralax1">
+        <Featured />
+      </div>
+      <ClientReviews/>
     </>
   );
 }

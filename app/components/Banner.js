@@ -4,12 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Core Swiper styles
 import "swiper/css/navigation"; // Navigation buttons
 import "swiper/css/pagination"; // Pagination
-
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 const Banner = () => {
   return (
-    <div className="w-full  mx-auto ">
+    <div className="w-full  mx-auto mt-[3px]">
       <Swiper
         className="w-full "
         style={{ width: "100%" }}

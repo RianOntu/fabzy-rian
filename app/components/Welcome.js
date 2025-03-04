@@ -1,14 +1,13 @@
 import React from "react";
+import Heading from "./common/Heading";
 
 export default function Welcome() {
   return (
     <>
       <div className="w-[80%] mx-auto mt-[50px] mb-[50px] relative">
-        <hr className="absolute w-[30%] h-[5px] top-[21px]" />
-        <h1 className="text-center  relative text-2xl md:text-5xl">
+        <Heading>
           Welcome to <b>Fabzy</b>
-          <hr className="absolute w-[30%] top-[21px] right-0 h-[1px]" />
-        </h1>
+        </Heading>
         <p className=" text-[#9AAFAA] mt-[20px] justify-center text-center">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -17,7 +16,7 @@ export default function Welcome() {
           five centuries, but also into electronic typesetting, remaining
           essentially unchanged. It was popularised.
         </p>
-        <div className="flex mt-[20px] gap-4">
+        <div className="flex mt-[20px] gap-4 justify-center">
           <div className="bg-[#F6F6F6] w-[500px] flex items-center justify-around p-2 px-3">
             <img className="w-[300px] h-[200px]" src="/show.jpg" alt="" />
             <div className="flex flex-col">
