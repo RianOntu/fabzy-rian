@@ -48,6 +48,20 @@ body {
 .swiper-wrapper {
   width: 100% !important;
 }
+
+.paralax {
+  /* The image used */
+  background-image: url("/banner-1.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .swiper {
   width: 100% !important;
   position: relative !important;
