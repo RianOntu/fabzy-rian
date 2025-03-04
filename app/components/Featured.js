@@ -27,17 +27,30 @@ export default function Featured() {
         </div>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
-          slidesPerView={4} // Ensure multiple slides are visible
+          spaceBetween={10}
+          slidesPerView={1} // Default to 1 for small screens
+          slidesPerGroup={1} // Moves one slide at a time by default
+          breakpoints={{
+            640: { slidesPerView: 2, slidesPerGroup: 2 }, // 2 slides, moves 2 at a time
+            1024: { slidesPerView: 3, slidesPerGroup: 3 }, // 3 slides, moves 3 at a time
+            1280: { slidesPerView: 4, slidesPerGroup: 4 }, // 4 slides, moves 4 at a time
+          }}
           navigation
-          autoplay={{ delay: 3000 }}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false, // Allows autoplay to continue after interaction
+          }}
           loop={true}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 mt-[100px] gap-2">
-            {clothes.map((clothe) => (
-              <ProductCard product={clothe} />
-            ))}
-          </div>
+          {clothes.length > 0 ? (
+            clothes.map((clothe) => (
+              <SwiperSlide key={clothe._id}>
+                <ProductCard product={clothe} />
+              </SwiperSlide>
+            ))
+          ) : (
+            <p className="text-center text-white">Loading...</p> // Placeholder text while loading
+          )}
         </Swiper>
       </div>
     </>
