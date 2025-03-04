@@ -39,7 +39,8 @@ body {
   padding-right: 20px; /* Space for the line */
 }
 body {
-  overflow: hidden;
+  overflow-x: hidden;
+  font-family: Montserrat, Arial, Helvetica, sans-serif !important;
 }
 .swiper-slide-active {
   width: 100% !important;
@@ -52,15 +53,7 @@ body {
   position: relative !important;
   top: -39px !important;
 }
-.divider::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 2px; /* Thickness of the line */
-  height: 100%; /* Full height */
-  background-color: black; /* Color of the line */
-}
+
 #shadow {
   position: absolute;
   z-index: -1;
