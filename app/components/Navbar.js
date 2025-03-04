@@ -5,7 +5,7 @@ function Navbar() {
     <>
       {/* Purple Banner */}
       <div className="flex flex-col">
-        <div className="absolute top-0 left-0 w-full h-10 bg-purple-600 flex justify-end mr-2 items-center">
+        <div className="absolute top-0 left-0 w-full h-10 bg-[#976797] flex justify-end mr-2 items-center">
           <div className="flex mr-2">
             <h1 className="text-md text-white mr-2">
               New Offer This Weekend Only! Hurry Shop Now!
