@@ -1,4 +1,5 @@
 import Banner from "./components/Banner";
+import Blog from "./components/Blog";
 import ClientReviews from "./components/ClientReviews";
 import Featured from "./components/Featured";
 import Grid from "./components/Grid";
@@ -24,6 +25,7 @@ export default function Home() {
       <div className="paralax">
         <Video />
       </div>
+      <Blog />
     </>
   );
 }
