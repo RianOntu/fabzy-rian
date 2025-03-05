@@ -1,8 +1,11 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import Input from "./common/Input";
 import Link from "next/link";
 
 function Navbar() {
+  const [isTopsHovered, setIsTopsHovered] = useState(false);
+  const [isTopsOpen, setIsTopsOpen] = useState(false);
   return (
     <>
       {/* Purple Banner */}
@@ -36,9 +39,96 @@ function Navbar() {
         <div className="flex items-center justify-between w-full">
           <div className="w-[500px] h-[120px]">
             <nav className="ml-10 flex space-x-8 text-black font-medium navbar mt-10">
-              <a href="#" className="hover:text-gray-600">
-                TOPS ▾
-              </a>
+              {/* TOPS Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setIsTopsHovered(true)}
+                onMouseLeave={() => setIsTopsHovered(false)}
+              >
+                <a href="#" className="hover:text-gray-600">
+                  TOPS ▾
+                </a>
+           
+
+                {/* Dropdown Menu */}
+                {isTopsOpen && (
+                  <div
+                    className="absolute left-0 top-full mt-2 bg-white shadow-lg p-4 grid grid-cols-3 gap-8 w-[500px] border rounded-md"
+                    onMouseEnter={() => setIsTopsOpen(true)}
+                    onMouseLeave={() => setIsTopsOpen(false)}
+                  >
+                    {/* Column 1 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">FORMAL</h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Metallic Halter
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Scoop Neck
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Sheer Tops
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Column 2 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">
+                        OFF SHOULDER
+                      </h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Echo Cropped
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Guipure Midi
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Short Sleeve
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Column 3 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">BATWING</h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Asymmetric
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Dolan Sleeve
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Flecked Linen
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Other Navigation Items */}
               <a href="#" className="hover:text-gray-600">
                 DENIMS ▾
               </a>
