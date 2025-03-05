@@ -2,6 +2,7 @@ import Banner from "./components/Banner";
 import Blog from "./components/Blog";
 import ClientReviews from "./components/ClientReviews";
 import Featured from "./components/Featured";
+import Footer from "./components/Footer";
 import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
 import NewArrival from "./components/NewArrival";
@@ -28,6 +29,7 @@ export default function Home() {
       </div>
       <Blog />
       <Subscribe />
+      <Footer />
     </>
   );
 }
