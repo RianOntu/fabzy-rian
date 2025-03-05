@@ -1,4 +1,5 @@
 import React from "react";
+import Input from "./common/Input";
 
 function Navbar() {
   return (
@@ -95,20 +96,14 @@ function Navbar() {
                   </div>
                 </div>
 
-                {/* Search Input */}
-                <div className="relative">
-                  <input
-                    className="m-3 w-[280px] h-[40px] bg-[#F7F7F7] placeholder:text-[12px] placeholder:p-2 focus:outline-none"
-                    type="text"
-                    placeholder="SEARCH THE STORE"
-                  />
+                <Input placeholder="SEARCH THE STORE">
                   <i className="fa-solid fa-magnifying-glass absolute right-[13px] top-[24px]"></i>
-                </div>
+                </Input>
               </div>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </>
   );
 }

@@ -5,6 +5,7 @@ import Featured from "./components/Featured";
 import Grid from "./components/Grid";
 import Navbar from "./components/Navbar";
 import NewArrival from "./components/NewArrival";
+import Subscribe from "./components/Subscribe";
 import Video from "./components/Video";
 import Welcome from "./components/Welcome";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <Video />
       </div>
       <Blog />
+      <Subscribe />
     </>
   );
 }
