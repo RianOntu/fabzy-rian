@@ -7,7 +7,7 @@ import "swiper/css/pagination"; // Pagination
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-export default function Featured() {
+export default function NewArrival() {
   const [clothes, setClothes] = useState([]);
   useEffect(() => {
     axios
@@ -19,9 +19,9 @@ export default function Featured() {
     <>
       <div className="w-[80%] mx-auto">
         <div className="flex justify-center mt-[100px] py-8">
-          <h1 className="text-sm text-white mr-2">FEATURED</h1>
-          <p className="text-white">|</p>
-          <h1 className="text-sm ml-2 text-white">TOP RATED</h1>
+          <h1 className="text-xl text-white mr-2">
+            NEW <span className="text-black font-bold">ARRIVAL</span>
+          </h1>
         </div>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
