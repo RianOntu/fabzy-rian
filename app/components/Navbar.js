@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Input from "./common/Input";
 import Link from "next/link";
 
 function Navbar() {
-  const [isTopsHovered, setIsTopsHovered] = useState(false);
   const [isTopsOpen, setIsTopsOpen] = useState(false);
+
   return (
     <>
       {/* Purple Banner */}
@@ -42,18 +42,17 @@ function Navbar() {
               {/* TOPS Dropdown */}
               <div
                 className="relative"
-                onMouseEnter={() => setIsTopsHovered(true)}
-                onMouseLeave={() => setIsTopsHovered(false)}
+                onMouseEnter={() => setIsTopsOpen(true)}
+                onMouseLeave={() => setIsTopsOpen(false)}
               >
                 <a href="#" className="hover:text-gray-600">
                   TOPS ▾
                 </a>
-           
 
                 {/* Dropdown Menu */}
                 {isTopsOpen && (
                   <div
-                    className="absolute left-0 top-full mt-2 bg-white shadow-lg p-4 grid grid-cols-3 gap-8 w-[500px] border rounded-md"
+                    className="absolute left-0 top-full mt-2 bg-white shadow-lg p-4 grid grid-cols-3 gap-8 w-[500px] border rounded-md z-50"
                     onMouseEnter={() => setIsTopsOpen(true)}
                     onMouseLeave={() => setIsTopsOpen(false)}
                   >
