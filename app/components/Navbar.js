@@ -5,6 +5,7 @@ import Link from "next/link";
 
 function Navbar() {
   const [isTopsOpen, setIsTopsOpen] = useState(false);
+  const [isDenimsOpen, setIsDenimsOpen] = useState(false);
 
   return (
     <>
@@ -39,9 +40,8 @@ function Navbar() {
         <div className="flex items-center justify-between w-full">
           <div className="w-[500px] h-[120px]">
             <nav className="ml-10 flex space-x-8 text-black font-medium navbar mt-10">
-              {/* TOPS Dropdown */}
               <div
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => setIsTopsOpen(true)}
                 onMouseLeave={() => setIsTopsOpen(false)}
               >
@@ -51,11 +51,7 @@ function Navbar() {
 
                 {/* Dropdown Menu */}
                 {isTopsOpen && (
-                  <div
-                    className="absolute left-0 top-full mt-2 bg-white shadow-lg p-4 grid grid-cols-3 gap-8 w-[500px] border rounded-md z-50"
-                    onMouseEnter={() => setIsTopsOpen(true)}
-                    onMouseLeave={() => setIsTopsOpen(false)}
-                  >
+                  <div className="absolute top-4 left-0  mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6 grid grid-cols-3 gap-8 w-[600px] border rounded-md z-50">
                     {/* Column 1 */}
                     <div>
                       <h3 className="text-gray-800 font-bold mb-2">FORMAL</h3>
@@ -127,10 +123,88 @@ function Navbar() {
                 )}
               </div>
 
-              {/* Other Navigation Items */}
-              <a href="#" className="hover:text-gray-600">
-                DENIMS ▾
-              </a>
+              {/* DENIMS Dropdown */}
+              <div
+                className="relative group"
+                onMouseEnter={() => setIsDenimsOpen(true)}
+                onMouseLeave={() => setIsDenimsOpen(false)}
+              >
+                <a href="#" className="hover:text-gray-600">
+                  DENIMS ▾
+                </a>
+
+                {isDenimsOpen && (
+                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6 grid grid-cols-3 gap-8 w-[600px] border rounded-md z-50">
+                    {/* Column 1 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">SKINNY</h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            High Rise
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Low Rise
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Mid Rise
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Column 2 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">
+                        STRAIGHT FIT
+                      </h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Classic Fit
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Regular Fit
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Relaxed Fit
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Column 3 */}
+                    <div>
+                      <h3 className="text-gray-800 font-bold mb-2">WIDE LEG</h3>
+                      <ul className="space-y-1 text-gray-600">
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Palazzo
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Baggy Fit
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="hover:text-purple-600">
+                            Bootcut
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
               <a href="#" className="hover:text-gray-600">
                 ACCESSORIES
               </a>
