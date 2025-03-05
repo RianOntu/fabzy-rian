@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./common/Input";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -21,7 +22,13 @@ function Navbar() {
         {/* Logo Section */}
         <div id="box" className="w-[20rem] shadow">
           <div id="content">
-            <img className="p-8 pt-[5rem] w-[19rem]" src="/logo.webp" alt="" />
+            <Link href="/">
+              <img
+                className="p-8 pt-[5rem] w-[19rem]"
+                src="/logo.webp"
+                alt=""
+              />
+            </Link>
           </div>
         </div>
 
