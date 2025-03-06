@@ -98,6 +98,25 @@ body {
   top:20px;
   left:23px
 }
+.img_hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.img_hover .overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #BAA2AB;
+  opacity: 0;
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease, opacity 0.3s ease;
+}
+
+.img_hover:hover .overlay {
+  opacity: 0.4;
+  transform: rotateY(360deg);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
