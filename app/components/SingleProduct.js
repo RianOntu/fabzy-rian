@@ -12,7 +12,7 @@ export default function SingleProduct({ singleProduct, loading }) {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="mt-5 flex gap-4 w-[80%] mx-auto items-center mb-5">
+        <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-center mb-5">
           <img
             className="w-[397px] h-[397px]"
             src="https://cdn11.bigcommerce.com/s-12ea9/images/stencil/1280x1280/products/27/228/21__77186.1518852172.jpg?c=2"
