@@ -18,6 +18,7 @@ export default function Welcome() {
         </p>
         <div className="flex flex-col md:flex-row mt-[20px] gap-4 justify-center">
           <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] flex items-center gap-2 p-2 ">
+            
             <img
               className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px]"
               src="/show.jpg"
