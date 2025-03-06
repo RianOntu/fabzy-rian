@@ -11,7 +11,7 @@ export default function Blog() {
           <hr className="absolute w-[80%] top-[21px] left-0 md:left-[202px] h-[1px]" />
         </div>
         <div className="mt-5 flex flex-col md:flex-row justify-center gap-14">
-          <div className="flex flex-col md:flex-row gap-3 items-center">
+          <div className="flex flex-col xl:flex-row gap-3 items-center">
             <img
               className="w-[250px] h-[250px] object-cover"
               src="https://cdn11.bigcommerce.com/s-12ea9/images/stencil/original/uploaded_images/2.jpg?t=1520920054"
@@ -29,7 +29,7 @@ export default function Blog() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-3 items-center">
+          <div className="flex flex-col xl:flex-row gap-3 items-center">
             <img
               className="w-[250px] h-[250px] object-cover"
               src="https://cdn11.bigcommerce.com/s-12ea9/images/stencil/original/uploaded_images/10.jpg?t=1521442302"

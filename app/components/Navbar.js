@@ -46,12 +46,12 @@ function Navbar() {
 
         {/* Navigation Menu */}
         <button
-          className="block md:hidden text-black text-2xl relative right-[-83px]"
+          className="block xl:hidden text-black text-2xl relative right-[-83px] md:right-[32px]"
           onClick={toggleMenu}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
-        <div className="hidden md:flex items-center justify-between w-full">
+        <div className="hidden xl:flex items-center justify-between w-full">
           <div className="w-[500px] h-[120px]">
             <nav className="ml-10 flex space-x-8 text-black font-medium navbar mt-10">
               <div
@@ -289,15 +289,15 @@ function Navbar() {
         </div>
       </div>
       {isOpen && (
-        <div className="flex flex-col md:hidden items-center  w-full">
+        <div className="flex flex-col xl:hidden items-center  w-full">
           <div className="w-[300px] h-[120px]">
             <nav className="justify-center flex flex-col space-x-8 text-black font-medium navbar mt-[-2.75rem]">
               {/* TOPS Dropdown */}
               <div
                 className="relative group mx-auto text-center"
-                onClick={() => toggleDropdown(1)} // Toggle Tops dropdown
+                onClick={() => toggleDropdown(1)} 
               >
-                <a href="#" className="hover:text-gray-600 ml-10 md:ml-0">
+                <a href="#" className="hover:text-gray-600 ml-10 ">
                   TOPS ▾
                 </a>
 
@@ -382,7 +382,7 @@ function Navbar() {
               >
                 <a
                   href="#"
-                  className="hover:text-gray-600 text-center justify-center ml-4 md:ml-0"
+                  className="hover:text-gray-600 text-center justify-center ml-4 "
                 >
                   DENIMS ▾
                 </a>
@@ -461,13 +461,13 @@ function Navbar() {
               </div>
               <a
                 href="#"
-                className="hover:text-gray-600 mx-auto justify-center flex md:block md:m-0"
+                className="hover:text-gray-600 mx-auto justify-center flex "
               >
                 ACCESSORIES
               </a>
               <a
                 href="#"
-                className="hover:text-gray-600 mx-auto justify-center flex mr-3 md:block md:m-0"
+                className="hover:text-gray-600 mx-auto justify-center flex mr-3 "
               >
                 MORE
               </a>

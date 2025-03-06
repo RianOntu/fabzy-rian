@@ -17,36 +17,36 @@ export default function Welcome() {
           essentially unchanged. It was popularised.
         </p>
         <div className="flex flex-col md:flex-row mt-[20px] gap-4 justify-center">
-          <div className="bg-[#F6F6F6] w-[300px] md:w-[500px] flex items-center justify-around p-2 px-3">
+          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] flex items-center gap-2 p-2 ">
             <img
-              className="w-[80px] h-[70px] md:w-[300px] md:h-[200px]"
+              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px]"
               src="/show.jpg"
               alt=""
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col lg:w-full">
               <h3 className="text-center">
-                <span className="bg-[#976797] text-white text-md md:text-2xl">
+                <span className="bg-[#976797] text-white text-md xl:text-2xl">
                   SMART
                 </span>
-                <span className="text-md md:text-2xl"> SHOES</span>
+                <span className="text-md xl:text-2xl"> SHOES</span>
               </h3>
               <p className="text-center text-sm text text-[#9AAFAA]">
                 lorem ipsum is simply dummy text of printing typesing
               </p>
             </div>
           </div>
-          <div className="bg-[#F6F6F6] w-[300px] md:w-[500px] flex items-center justify-around p-2 px-3">
+          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] flex items-center justify-around p-2 px-3">
             <img
-              className="w-[80px] h-[70px] md:w-[300px] md:h-[200px]"
+              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px]"
               src="/sunglass.jpg"
               alt=""
             />
             <div className="flex flex-col">
               <h3 className="text-center">
-                <span className="bg-[#976797] text-white text-md md:text-2xl">
+                <span className="bg-[#976797] text-white text-md xl:text-2xl">
                   SMART
                 </span>
-                <span className="text-md md:text-2xl"> GLASS</span>
+                <span className="text-md xl:text-2xl"> GLASS</span>
               </h3>
               <p className="text-center text-sm text text-[#9AAFAA]">
                 lorem ipsum is simply dummy text of printing typesing

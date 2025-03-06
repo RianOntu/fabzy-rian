@@ -3,8 +3,8 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <div className="flex border-t-[0.5px] flex-col md:flex-row">
-        <div className="flex flex-col md:flex-row">
+      <div className="flex border-t-[0.5px] flex-col xl:flex-row">
+        <div className="flex flex-col lg:flex-row">
           <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px]">
             <img src="/logo_footer.webp" alt="" />
             <p className="text-xs mt-4">Lorem ipsum</p>
@@ -12,7 +12,7 @@ export default function Footer() {
             <p className="text-xs mt-2">Lorem ipsum</p>
             <p className="text-xs mt-2">Lorem ipsum</p>
           </div>
-          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px]">
+          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px] xl:w-[300px]">
             <h1 className="text-md font-bold">NAVIGATE</h1>
             <p className="text-xs mt-4 flex gap-2">
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
@@ -29,8 +29,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row">
-          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px]">
+        <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px] xl:w-[300px]">
             <h1 className="text-md font-bold">CATEGORIES</h1>
             <p className="text-xs mt-4 flex gap-2 items-center">
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
@@ -45,7 +45,7 @@ export default function Footer() {
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
             </p>
           </div>
-          <div className="flex flex-col  p-8 px-12 w-[400px]">
+          <div className="flex flex-col  p-8 px-12 w-[400px] xl:w-[290px]">
             <h1 className="text-md font-bold">INFORMATION</h1>
             <p className="text-xs mt-4 flex gap-2 items-center">
               <i class="fa-solid fa-location-dot text-[#976797]"></i>33 New

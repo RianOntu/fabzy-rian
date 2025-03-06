@@ -11,22 +11,20 @@ export default function SliderSection({ clothes = [] }) {
     return <p className="text-center text-white">Error loading products</p>;
   }
 
-  const settings = {
-    dots: true, // Show indicator dots
-    infinite: true, // Infinite loop only if enough items
+  var settings = {
+    dots: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1, // Change to 1 for smooth scrolling
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 3000,
-    arrows: true, // Show navigation arrows
+    slidesToScroll: 4,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: clothes.length > 3,
+          slidesToScroll: 3,
+          infinite: true,
           dots: true,
         },
       },
@@ -34,8 +32,10 @@ export default function SliderSection({ clothes = [] }) {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: clothes.length > 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {
@@ -43,6 +43,8 @@ export default function SliderSection({ clothes = [] }) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
+          dots: true,
         },
       },
     ],
