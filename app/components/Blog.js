@@ -10,7 +10,7 @@ export default function Blog() {
           </h1>
           <hr className="absolute w-[80%] top-[21px] left-0 md:left-[202px] h-[1px]" />
         </div>
-        <div className="mt-5 flex justify-center gap-14">
+        <div className="mt-5 flex flex-col md:flex-row justify-center gap-14">
           <div className="flex flex-col md:flex-row gap-3 items-center">
             <img
               className="w-[250px] h-[250px] object-cover"
