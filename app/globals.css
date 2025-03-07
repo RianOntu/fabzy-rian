@@ -124,3 +124,6 @@ body {
     text-wrap: balance;
   }
 }
+@media only screen and (min-width: 375px) and (max-width:819px) {
+  
+}

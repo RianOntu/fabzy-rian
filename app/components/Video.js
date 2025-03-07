@@ -37,8 +37,8 @@ export default function VideoSection() {
             <FaPlay className="text-2xl" />
           </div>
         </div>
-        <h2 className="text-3xl font-bold mt-5">FASHION FOR ALL ERA</h2>
-        <p className="text-lg mt-4">
+        <h2 className="text-md md:text-3xl font-bold mt-5">FASHION FOR ALL ERA</h2>
+        <p className="text-sm md:text-lg w-[300px] md:w-full mt-4">
           Clothes mean nothing until someone lives in them!!!
         </p>
       </div>

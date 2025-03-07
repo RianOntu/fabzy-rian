@@ -21,7 +21,7 @@ function Navbar() {
       <div className="flex flex-col">
         <div className="absolute top-0 left-0 w-full h-10 bg-[#976797] flex justify-end mr-2 items-center">
           <div className="hidden md:flex mr-2">
-            <h1 className="text-md text-white mr-2">
+            <h1 className="text-sm md:text-md text-white mr-2">
               New Offer This Weekend Only! Hurry Shop Now!
             </h1>{" "}
             <h1 className="text-white"> |</h1>{" "}
@@ -303,7 +303,7 @@ function Navbar() {
 
                 {/* Dropdown Menu */}
                 {dropdownOpen === 1 && (
-                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6 grid grid-cols-1 lg:grid-cols-3 gap-8 w-[200px] md:w-[600px] border rounded-md z-50">
+                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6 grid grid-cols-1 lg:grid-cols-3 gap-8 w-[200px] lg:w-[500px] xl:w-[600px] border rounded-md z-50">
                     {/* Column 1 */}
                     <div>
                       <h3 className="text-gray-800 font-bold mb-2">FORMAL</h3>
@@ -388,7 +388,7 @@ function Navbar() {
                 </a>
 
                 {dropdownOpen === 2 && (
-                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6  gap-8 w-[300px] md:w-[600px] border rounded-md z-50">
+                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6  gap-8 w-[200px] lg:w-[500px] xl:w-[600px] grid grid-cols-1 lg:grid-cols-3 border rounded-md z-50">
                     {/* Column 1 */}
                     <div>
                       <h3 className="text-gray-800 font-bold mb-2">SKINNY</h3>

@@ -12,7 +12,7 @@ export default function RelatedProductsRow() {
 
   return (
     <>
-      <div className="w-[80%] mx-auto mt-[90px]">
+      <div className="w-[80%] 2xl:w-[50%] mx-auto mt-[90px]">
         <SliderSection clothes={clothes} />
       </div>
     </>

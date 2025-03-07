@@ -12,7 +12,7 @@ export default function NewArrival() {
 
   return (
     <>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[80%] 2xl:w-[50%] mx-auto">
         <div className="flex justify-center mt-[100px] py-8">
           <h1 className="text-xl text-white mr-2">
             NEW <span className="text-black font-bold">ARRIVAL</span>

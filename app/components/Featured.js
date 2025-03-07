@@ -12,7 +12,7 @@ export default function Featured() {
 
   return (
     <>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[80%] 2xl:w-[50%] mx-auto">
         <div className="flex justify-center mt-[100px] py-8">
           <h1 className="text-sm text-white mr-2">FEATURED</h1>
           <p className="text-white">|</p>

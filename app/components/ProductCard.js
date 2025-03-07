@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link href={`/shop/${product._id}`}>
       <div
-        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-300 md:w-[300px] lg:w-[230px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div"
+        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-[201px]  lg:w-[230px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
           <img
             src="https://cdn11.bigcommerce.com/s-12ea9/images/stencil/500x550/products/27/223/22__97286.1518852179.jpg?c=2"
             alt={product.name}
-            className="absolute top-0 left-0 w-full object-cover rounded-md transition-all duration-300"
+            className="absolute top-0 left-0 w-full object-cover rounded-md transition-all duration-500"
           />
           {/* Buttons Coming from Top */}
           <div
@@ -38,7 +38,7 @@ const ProductCard = ({ product }) => {
 
         {/* Product Info - Expands Upward on Hover */}
         <div
-          className={`absolute bottom-0 w-full bg-white transition-all duration-300 ease-in-out ${
+          className={`absolute bottom-0 w-full bg-white transition-all duration-500 ease-in-out ${
             isHovered ? "h-[200px]" : "h-[140px]"
           }`}
         >
