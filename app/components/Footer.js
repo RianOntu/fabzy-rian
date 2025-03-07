@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <div className="flex border-t-[0.5px] flex-col xl:flex-row">
+      <div className="flex border-t-[0.5px] flex-col xl:flex-row justify-center">
         <div className="flex flex-col lg:flex-row">
           <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px]">
             <img src="/logo_footer.webp" alt="" />

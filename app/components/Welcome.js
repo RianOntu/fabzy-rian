@@ -17,11 +17,11 @@ export default function Welcome() {
           essentially unchanged. It was popularised.
         </p>
         <div className="flex flex-col md:flex-row mt-[20px] gap-4 justify-center">
-          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] flex items-center gap-2 p-2 ">
+          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] flex items-center gap-2 p-2 ">
             
             <img
-              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px]"
-              src="/show.jpg"
+              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px] object-contain"
+              src="https://www.pngarts.com/files/3/Leather-Boot-PNG-Transparent-Image.png"
               alt=""
             />
             <div className="flex flex-col lg:w-full">
@@ -36,10 +36,10 @@ export default function Welcome() {
               </p>
             </div>
           </div>
-          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] flex items-center justify-around p-2 px-3">
+          <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] flex items-center justify-around gap-2 p-2 px-3">
             <img
-              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px]"
-              src="/sunglass.jpg"
+              className="w-[80px] h-[70px] md:w-[100px] md:h-[80px] xl:w-[200px] xl:h-[190px] object-contain"
+              src="https://www.pngarts.com/files/4/Tom-Ford-Sunglasses-PNG-Image-Transparent-Background.png"
               alt=""
             />
             <div className="flex flex-col">
