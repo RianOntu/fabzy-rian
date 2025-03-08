@@ -2,20 +2,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "./common/Input";
 import Link from "next/link";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
   const [isTopsOpen, setIsTopsOpen] = useState(false);
   const [isDenimsOpen, setIsDenimsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDropdown = (index) => {
     setDropdownOpen(dropdownOpen === index ? null : index);
+    setActiveDropdown(!activeDropdown);
   };
 
+  useEffect(() => {
+    fetch(`https://admin.ezicalc.com/api/public/products/get/15`)
+      .then((res) => res.json())
+      .then((data) => console.log("data from API", data));
+  }, []);
   // Close sidebar if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -314,29 +321,34 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div
-          ref={sidebarRef}
-          className="flex flex-col xl:hidden items-center  w-full"
-        >
+        <div ref={sidebarRef} className="flex flex-col xl:hidden items-center">
           <div
             className={`fixed top-0 left-0 max-w-[100vw] h-full bg-white shadow-lg z-50 transform ${
               isOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out`}
           >
-            
-            <nav className="justify-center flex flex-col space-x-8 text-black font-medium navbar mt-[6.25rem] p-3">
+            {isOpen && <FaTimes className="flex justify-end absolute right-0 top-[19px]" onClick={() => setIsOpen(!isOpen)} />}
+            <nav className="justify-start flex flex-col space-x-8 text-black font-medium navbar mt-[6.25rem] p-3">
               {/* TOPS Dropdown */}
+
               <div
-                className="relative group mx-auto text-center p-2"
+                className="relative group  p-2"
                 onClick={() => toggleDropdown(1)}
               >
-                <a href="#" className="hover:text-gray-600 ml-10  p-2">
+                <a href="#" className="hover:text-gray-600 ml-10 p-2">
                   TOPS ▾
                 </a>
 
                 {/* Dropdown Menu */}
-                {dropdownOpen === 1 && (
-                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6 grid grid-cols-1 lg:grid-cols-3 gap-8 w-[200px] lg:w-[500px] xl:w-[600px] border rounded-md z-50">
+                <div
+                  className={`relative  transition-all duration-300 ease-in-out ${
+                    dropdownOpen === 1
+                      ? "h-[400px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  } overflow-hidden lg:border lg:rounded-md lg:shadow-white lg:bg-[#F7F7F7] `}
+                  style={{ width: "200px" }}
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-3 ml-[40px] p-6">
                     {/* Column 1 */}
                     <div>
                       <h3 className="text-gray-800 font-bold mb-2">FORMAL</h3>
@@ -405,12 +417,12 @@ function Navbar() {
                       </ul>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               {/* DENIMS Dropdown */}
               <div
-                className="relative group mx-auto text-center p-2"
+                className="relative group  p-2"
                 onClick={() => toggleDropdown(2)} // Toggle Denims dropdown
               >
                 <a
@@ -421,7 +433,7 @@ function Navbar() {
                 </a>
 
                 {dropdownOpen === 2 && (
-                  <div className="absolute top-4 left-0 mt-2 bg-[#F7F7F7] shadow-md shadow-white p-6  gap-8 w-[200px] lg:w-[500px] xl:w-[600px] grid grid-cols-1 lg:grid-cols-3 border rounded-md z-50">
+                  <div className="relative  left-0 mt-2 lg:shadow-white lg:bg-[#F7F7F7]  w-[160px] lg:w-[500px]  grid grid-cols-1 lg:grid-cols-3 lg:rounded-md p-6">
                     {/* Column 1 */}
                     <div>
                       <h3 className="text-gray-800 font-bold mb-2">SKINNY</h3>
@@ -492,18 +504,16 @@ function Navbar() {
                   </div>
                 )}
               </div>
-              <a
-                href="#"
-                className="hover:text-gray-600 mx-auto justify-center flex  p-2"
-              >
-                ACCESSORIES
-              </a>
-              <a
-                href="#"
-                className="hover:text-gray-600 mx-auto justify-center flex mr-3  p-2"
-              >
-                MORE
-              </a>
+              <div className="relative group margin_left p-2">
+                <a href="#" className="hover:text-gray-600  flex  ">
+                  ACCESSORIES
+                </a>
+              </div>
+              <div className="relative group margin_left p-2">
+                <a href="#" className="hover:text-gray-600  flex mr-3  ">
+                  MORE
+                </a>
+              </div>
             </nav>
           </div>
         </div>

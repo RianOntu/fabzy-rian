@@ -46,10 +46,10 @@ body {
 }
 
 .swiper-slide-active {
-  width: 100% !important;
+  width: 100vw !important;
 }
 .swiper-wrapper {
-  width: 100% !important;
+  width: 100vw !important;
 }
 
 .paralax {
@@ -117,6 +117,9 @@ body {
   transform: rotateY(0deg);
   transition: transform 0.6s ease, opacity 0.3s ease;
 }
+.margin_left {
+  margin-left: 49px!important;
+}
 
 .img_hover:hover .overlay {
   opacity: 0.4;
@@ -125,7 +128,14 @@ body {
 #content {
   height: 120px !important;
 }
-
+.dropdown {
+  position: absolute;
+  top: 15px; /* Positions the dropdown below the link */
+  left: 0;
+  width: 100%; /* Ensures the dropdown fits within the container */
+  max-height: 400px; /* Prevents the dropdown from being too large */
+  overflow-y: auto; /* Allows scrolling if the content exceeds max height */
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
