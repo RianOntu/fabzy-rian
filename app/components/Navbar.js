@@ -46,7 +46,7 @@ function Navbar() {
 
         {/* Navigation Menu */}
         <button
-          className="block xl:hidden text-black text-2xl relative right-[-83px] md:right-[32px]"
+          className="block xl:hidden text-black text-2xl relative right-[-74%] md:right-[32px]"
           onClick={toggleMenu}
         >
           {isOpen ? <FaTimes /> : <FaBars />}

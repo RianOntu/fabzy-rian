@@ -16,7 +16,7 @@ export default function Welcome() {
           five centuries, but also into electronic typesetting, remaining
           essentially unchanged. It was popularised.
         </p>
-        <div className="flex flex-col md:flex-row mt-[20px] gap-4 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-[20px] gap-4 justify-center">
           <div className="bg-[#F6F6F6] w-[300px] md:w-[350px] lg:w-[400px] xl:w-[500px] flex items-center gap-2 p-2 ">
             
             <img
