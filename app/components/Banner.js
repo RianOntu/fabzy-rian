@@ -10,7 +10,7 @@ const Banner = () => {
   return (
     <div className="w-full  mx-auto mt-[3px]">
       <Swiper
-        className="w-full "
+        className="w-full h-full"
         style={{ width: "100%" }}
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
@@ -20,7 +20,11 @@ const Banner = () => {
         loop={true} // Infinite scrolling
       >
         <SwiperSlide>
-          <img className="w-full" src="/banner-1.jpg" alt="Slide 1" />
+          <img
+            className="w-full  h-full object-cover"
+            src="/banner-1.jpg"
+            alt="Slide 1"
+          />
           {/* Centered Text */}
           <div className="absolute inset-0 flex items-center justify-center text-center">
             <h1 className="text-white text-md md:text-5xl font-bold">
@@ -39,7 +43,11 @@ const Banner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <img className="w-full" src="/banner-2.jpg" alt="Slide 2" />
+          <img
+            className="w-full h-full object-cover"
+            src="/banner-2.jpg"
+            alt="Slide 2"
+          />
           {/* Centered Text */}
           <div className="absolute inset-0 flex items-center justify-center text-center">
             <h1 className="text-white text-md md:text-5xl font-bold">
