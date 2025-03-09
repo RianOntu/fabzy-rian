@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Input from "./common/Input";
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 
 function Navbar() {
   const [isTopsOpen, setIsTopsOpen] = useState(false);
@@ -11,6 +12,7 @@ function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const { cart } = useCart();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDropdown = (index) => {
@@ -252,8 +254,8 @@ function Navbar() {
                 <a href="#" className="hover:text-gray-600">
                   ACCESSORIES
                 </a>
-                <a href="#" className="hover:text-gray-600">
-                  MORE
+                <a href="/cart" className="hover:text-gray-600">
+                  CART
                 </a>
               </nav>
             </div>
@@ -304,7 +306,9 @@ function Navbar() {
                         <i className="fa-solid fa-cart-shopping text-sm mr-1 ml-1"></i>
                         <div className="flex flex-col p-4">
                           <h1 className="text-[12px]">VIEW CART</h1>
-                          <p className="text-[#5C5C5C] text-[10px]">0</p>
+                          <p className="text-[#5C5C5C] text-[10px]">
+                            {cart.length}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -327,7 +331,12 @@ function Navbar() {
               isOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out`}
           >
-            {isOpen && <FaTimes className="flex justify-end absolute right-0 top-[19px]" onClick={() => setIsOpen(!isOpen)} />}
+            {isOpen && (
+              <FaTimes
+                className="flex justify-end absolute right-0 top-[19px]"
+                onClick={() => setIsOpen(!isOpen)}
+              />
+            )}
             <nav className="justify-start flex flex-col space-x-8 text-black font-medium navbar mt-[6.25rem] p-3">
               {/* TOPS Dropdown */}
 
@@ -510,8 +519,8 @@ function Navbar() {
                 </a>
               </div>
               <div className="relative group margin_left p-2">
-                <a href="#" className="hover:text-gray-600  flex mr-3  ">
-                  MORE
+                <a href="/cart" className="hover:text-gray-600  flex mr-3  ">
+                  CART
                 </a>
               </div>
             </nav>

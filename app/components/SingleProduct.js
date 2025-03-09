@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import Star from "./Star";
+import { CartContext } from "../context/CartContext";
 
 export default function SingleProduct({ singleProduct, loading }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [variationsValues, setVariationValues] = useState([]);
@@ -13,14 +14,11 @@ export default function SingleProduct({ singleProduct, loading }) {
   const [matchedVariationPrice, setmMtchedVariationPrice] = useState("");
   const [discountAmount, setDiscountAmount] = useState(0);
   const [actualPrice, setActualPrice] = useState(0);
+  const [matchedVariation, setMatchedVariation] = useState("");
 
-  var settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 3,
-  };
+  const { addToCart, cart, removeFromCart } = useContext(CartContext);
+  console.log('cart',cart);
+  
 
   const variations =
     singleProduct?.has_variation == 1 &&
@@ -64,7 +62,7 @@ export default function SingleProduct({ singleProduct, loading }) {
     const matched_variation = variation_combinations.find(
       (vc) => vc.values === clickedText
     );
-
+    setMatchedVariation(matched_variation);
     if (matched_variation) {
       setmMtchedVariationPrice(matched_variation.price || "N/A");
       setDiscountAmount(
@@ -102,7 +100,15 @@ export default function SingleProduct({ singleProduct, loading }) {
               <h3 className="text-md font-semibold">
                 {singleProduct?.name || ""}{" "}
               </h3>
-              <h3 className="text-md font-semibold">BDT {actualPrice}</h3>
+
+              {actualPrice == 0 ? (
+                <h3 className="text-sm">Please select a variation</h3>
+              ) : (
+                <h3 className="text-md font-semibold">
+                  BDT {Number(actualPrice * count)}{" "}
+                </h3>
+              )}
+
               <h3 className="text-md font-semibold line-through">
                 {discountAmount == 0 ? "" : matchedVariationPrice}
               </h3>
@@ -162,7 +168,12 @@ export default function SingleProduct({ singleProduct, loading }) {
                 </button>
               </div>
               <div className="flex items-center gap-3 mt-5">
-                <button className="p-2 px-3 bg-[#976797] text-white text-sm">
+                <button
+                  className="p-2 px-3 bg-[#976797] text-white text-sm"
+                  onClick={() =>
+                    addToCart(singleProduct, matchedVariation, count)
+                  }
+                >
                   ADD TO CART
                 </button>
 
