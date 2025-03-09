@@ -1,20 +1,14 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../context/CartContext";
+import { CartContext, useCart } from "../context/CartContext";
 import Navbar from "../components/Navbar";
 import Subscribe from "../components/Subscribe";
 import Footer from "../components/Footer";
+import VITE_API_BASE_URL_IMG from "../BaseImage";
 
 const CartPage = () => {
-  const { removeFromCart, addToCart } = useContext(CartContext);
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    // Only access localStorage on the client side
-    const storedCart = JSON.parse(localStorage.getItem("cart"));
-    if (storedCart) {
-      setCart(storedCart);
-    }
-  }, []);
+  const { removeFromCart, addToCart, clearCart } = useContext(CartContext);
+  const { cart } = useCart();
 
   const handleIncrease = (item) => {
     addToCart(item, item.selectedVariation, 1);
@@ -51,7 +45,7 @@ const CartPage = () => {
                 className="flex items-center justify-between bg-white p-4 rounded-lg shadow-lg"
               >
                 <img
-                  src={`https://pub-c053b04a208d402dac06392a3df4fd32.r2.dev/15/image/${item.image}`}
+                  src={`${VITE_API_BASE_URL_IMG}/${item.image}`}
                   alt={item.name}
                   className="w-24 h-24 object-conatain rounded"
                 />
@@ -64,14 +58,20 @@ const CartPage = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <button
-                    onClick={() => handleDecrease(item)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDecrease(item);
+                    }}
                     className="px-2 py-1 bg-gray-300 rounded-full"
                   >
                     -
                   </button>
                   <span className="text-lg">{item.quantity}</span>
                   <button
-                    onClick={() => handleIncrease(item)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleIncrease(item);
+                    }}
                     className="px-2 py-1 bg-gray-300 rounded-full"
                   >
                     +
@@ -91,8 +91,8 @@ const CartPage = () => {
         {cart.length > 0 && (
           <div className="mt-8 flex justify-between items-center">
             <button
-              onClick={() => alert("Clear cart")}
-              className="px-4 py-2 bg-gray-400 text-white rounded-lg"
+              onClick={() => clearCart()}
+              className="px-4 py-2 bg-red-400 text-white rounded-lg"
             >
               Clear Cart
             </button>

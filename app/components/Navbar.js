@@ -2,7 +2,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "./common/Input";
 import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaCartArrowDown,
+  FaGift,
+  FaRegUser,
+  FaShippingFast,
+  FaTimes,
+} from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { BsFillTelephoneFill } from "react-icons/bs";
 import { useCart } from "../context/CartContext";
 
 function Navbar() {
@@ -266,21 +275,21 @@ function Navbar() {
                 <div className="border-r-[0.5px] h-[120px]">
                   <div className="flex border-b-[0.5px]">
                     <div className="border-r-[0.5px] w-[150px]">
-                      <h1 className="text-xs text-[#5C5C5C] p-2 py-6">
-                        <i className="fa-solid fa-truck-fast mr-2 text-sm"></i>
+                      <h1 className="text-xs flex items-center text-[#5C5C5C] p-2 py-6">
+                        <FaShippingFast className="mr-2 text-lg" />
                         FREE SHIPPING
                       </h1>
                     </div>
                     <div>
-                      <h1 className="text-xs p-2 py-6 text-[#5C5C5C]">
-                        <i className="fa-solid fa-gift mr-2 text-sm"></i>
+                      <h1 className="flex items-center text-xs p-2 py-6 text-[#5C5C5C]">
+                        <FaGift className="mr-2 text-lg" />
                         SPECIAL OFFER
                       </h1>
                     </div>
                   </div>
                   <div>
-                    <h1 className="text-xs p-5">
-                      <i className="fa-solid fa-phone mr-2"></i>
+                    <h1 className="text-xs flex items-center p-5">
+                      <BsFillTelephoneFill className="mr-2 text-lg" />
                       Customer care : (+00) 12 3456 890
                     </h1>
                   </div>
@@ -291,8 +300,8 @@ function Navbar() {
                 <div className="h-[120px]">
                   <div className="flex">
                     <div className="border-r-[0.5px] w-[150px]">
-                      <div className="flex items-center">
-                        <i className="fa-solid fa-user text-sm mr-1 ml-1"></i>
+                      <div className="flex items-center ">
+                        <FaRegUser className=" text-lg" />
                         <div className="flex flex-col p-4">
                           <h1 className="text-[12px]">ACCOUNT</h1>
                           <p className="text-[#5C5C5C] text-[10px]">
@@ -303,9 +312,9 @@ function Navbar() {
                     </div>
                     <div>
                       <div className="flex items-center">
-                        <i className="fa-solid fa-cart-shopping text-sm mr-1 ml-1"></i>
+                        <FaCartArrowDown className="text-lg " />
                         <div className="flex flex-col p-4">
-                          <h1 className="text-[12px]">VIEW CART</h1>
+                          <Link href="/cart" className="text-[12px]">VIEW CART</Link>
                           <p className="text-[#5C5C5C] text-[10px]">
                             {cart.length}
                           </p>
@@ -315,7 +324,7 @@ function Navbar() {
                   </div>
 
                   <Input placeholder="SEARCH THE STORE">
-                    <i className="fa-solid fa-magnifying-glass absolute right-[13px] top-[24px]"></i>
+                    <FaMagnifyingGlass className="absolute right-[13px] top-[24px] mr-2 text-lg" />
                   </Input>
                 </div>
               </div>

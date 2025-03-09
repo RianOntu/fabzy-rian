@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import Star from "./Star";
 import { CartContext } from "../context/CartContext";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import VITE_API_BASE_URL_IMG from "../BaseImage";
 
 export default function SingleProduct({ singleProduct, loading }) {
   const [count, setCount] = useState(1);
@@ -17,8 +19,8 @@ export default function SingleProduct({ singleProduct, loading }) {
   const [matchedVariation, setMatchedVariation] = useState("");
 
   const { addToCart, cart, removeFromCart } = useContext(CartContext);
-  console.log('cart',cart);
-  
+  console.log("cart", cart);
+  console.log("pr_images", singleProduct?.product_images);
 
   const variations =
     singleProduct?.has_variation == 1 &&
@@ -90,11 +92,19 @@ export default function SingleProduct({ singleProduct, loading }) {
         </div>
       ) : (
         <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
-          <img
-            className="w-[397px] h-[397px]"
-            src={`https://pub-c053b04a208d402dac06392a3df4fd32.r2.dev/15/image/${singleProduct?.image}`}
-            alt=""
-          />
+          <div className="flex flex-col w-full">
+            <img
+              className="w-full h-full"
+              src={`${VITE_API_BASE_URL_IMG}/${singleProduct?.image}`}
+              alt=""
+            />
+            <div className="grid grid-cols-2 md:grid-cols-5 mt-5">
+              {singleProduct?.product_images?.map((image) => (
+                <img className="w-[90px] h-[80px] object-cover small_image" src={`${VITE_API_BASE_URL_IMG}/${image?.name}`} alt="" />
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col">
             <div className="flex items-start justify-evenly gap-3">
               <h3 className="text-md font-semibold">
@@ -157,22 +167,20 @@ export default function SingleProduct({ singleProduct, loading }) {
                   className="p-2 px-3 bg-[#976797]"
                   onClick={() => setCount(count - 1)}
                 >
-                  <i class="fa-solid fa-angle-down text-white"></i>
+                  <FaChevronDown className="text-white" />
                 </button>
                 <h3 className="text-md">{count}</h3>
                 <button
                   className="p-2 px-3 bg-[#976797]"
                   onClick={() => setCount(count + 1)}
                 >
-                  <i class="fa-solid fa-angle-up text-white"></i>
+                  <FaChevronUp className="text-white" />
                 </button>
               </div>
               <div className="flex items-center gap-3 mt-5">
                 <button
                   className="p-2 px-3 bg-[#976797] text-white text-sm"
-                  onClick={() =>
-                    addToCart(singleProduct, matchedVariation, count)
-                  }
+                  onClick={() => addToCart(singleProduct, matchedVariation, 1)}
                 >
                   ADD TO CART
                 </button>

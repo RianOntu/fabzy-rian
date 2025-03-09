@@ -30,7 +30,9 @@ body {
 .slick-arrow {
   background-color: black!important;
 }
-
+.small_image{
+  object-position: top center;
+}
 #content {
   width: 100%;
   height: 100%;

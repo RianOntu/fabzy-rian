@@ -8,14 +8,23 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const router = useRouter();
-  // Initialize state from localStorage, or use an empty array if no data exists
-  const [cart, setCart] = useState(() => {
+  const [cart, setCart] = useState([]);
+
+  const clearCart = () => {
+    setCart([]); // Clear the cart state
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("cart"); // Clear cart from localStorage
+    }
+  };
+  // Load cart from localStorage on component mount
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
     }
-    return [];
-  });
+  }, []);
 
   // Function to save the cart to localStorage
   const saveCartToLocalStorage = (newCart) => {
@@ -25,91 +34,70 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product, selectedVariation, quantity) => {
-    console.log("Product Variations:", product?.selectedVariation?.values);
-    console.log("Selected Variation:", selectedVariation);
-
-    const selectedVariationDetails = product?.variation_combinations?.find(
-      (variation) => variation?.values?.includes(selectedVariation?.values)
-    );
-
-    if (!selectedVariationDetails) {
-      console.error("Selected variation is not available");
-      return;
-    }
-
-    const { price, stock } = selectedVariationDetails;
-
-    const existingItemIndex = cart.findIndex(
-      (item) =>
-        item?.id == product?.id && item.selectedVariation?.values == selectedVariation
-    );
-
-    let updatedCart;
-    if (existingItemIndex != -1) {
-      updatedCart = [...cart];
-      updatedCart[existingItemIndex].quantity += quantity;
-      toast.success("🦄 Item added to cart!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    } else {
-      updatedCart = [
-        ...cart,
-        {
-          id: product.id,
-          name: product.name,
-          price: price,
-          stock: stock,
-          selectedVariation: selectedVariation,
-          variationDetails: selectedVariationDetails,
-          quantity: quantity,
-          image: product.image,
-        },
-      ];
-      toast.success("🦄 Item added to cart!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
-
-    setCart(updatedCart);
-    saveCartToLocalStorage(updatedCart); // Save updated cart to localStorage
-    router.push("/cart");
+    setCart((prevCart) => {
+      const existingItemIndex = prevCart.findIndex(
+        (item) =>
+          item?.id === product?.id &&
+          JSON.stringify(item.selectedVariation?.values) ===
+            JSON.stringify(selectedVariation?.values)
+      );
+  
+      let updatedCart;
+      if (existingItemIndex !== -1) {
+        updatedCart = prevCart.map((item, index) =>
+          index === existingItemIndex
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        updatedCart = [
+          ...prevCart,
+          {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            stock: product.stock,
+            selectedVariation: selectedVariation,
+            quantity: quantity,
+            image: product.image,
+          },
+        ];
+      }
+  
+      saveCartToLocalStorage(updatedCart);
+      return updatedCart;
+    });
+  
+    toast.success("🛒 Cart Updated!");
   };
-
+  
   const removeFromCart = (productId, selectedVariation) => {
-    const updatedCart = cart.filter(
-      (item) =>
-        !(item.id == productId && item.selectedVariation == selectedVariation)
-    );
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter(
+        (item) =>
+          !(
+            item.id === productId &&
+            JSON.stringify(item.selectedVariation) ===
+              JSON.stringify(selectedVariation)
+          )
+      );
 
-    setCart(updatedCart);
-    saveCartToLocalStorage(updatedCart); // Save updated cart to localStorage
+      saveCartToLocalStorage(updatedCart);
+      return updatedCart;
+    });
   };
 
+  // Sync cart with localStorage whenever the cart changes
   useEffect(() => {
-    // Sync cart with localStorage whenever the cart changes
-    if (cart.length == 0) {
-      localStorage.removeItem("cart"); // Remove cart if empty
+    if (cart.length === 0) {
+      localStorage.removeItem("cart");
     } else {
       saveCartToLocalStorage(cart);
     }
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart,clearCart }}>
       {children}
     </CartContext.Provider>
   );

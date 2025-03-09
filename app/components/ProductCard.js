@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
-
+import { FaEye, FaHeart } from "react-icons/fa";
+import { FaPaste } from "react-icons/fa6";
+import VITE_API_BASE_URL_IMG from "../BaseImage";
 const ProductCard = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -14,7 +16,7 @@ const ProductCard = ({ product }) => {
         {/* Image Wrapper */}
         <div className="relative h-60 w-full overflow-hidden">
           <img
-            src={`https://pub-c053b04a208d402dac06392a3df4fd32.r2.dev/15/image/${product?.image}`}
+            src={`${VITE_API_BASE_URL_IMG}/${product?.image}`}
             alt={product?.name}
             className="absolute top-0 left-0 w-full object-cover rounded-md transition-all duration-500"
           />
@@ -27,13 +29,13 @@ const ProductCard = ({ product }) => {
             }`}
           >
             <button className="text-white text-sm bg-[#976797] p-2">
-              <i className="fa-solid fa-heart"></i>
+            <FaHeart className="text-white"/>
             </button>
             <button className="text-white text-sm bg-[#976797] p-2 mt-2">
-              <i className="fa-solid fa-eye"></i>
+            <FaEye className="text-white"/>
             </button>
             <button className="text-white text-sm bg-[#976797] p-2 mt-2">
-              <i className="fa-solid fa-paste"></i>
+            <FaPaste className="text-white" />
             </button>
           </div>
         </div>
