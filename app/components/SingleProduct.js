@@ -1,10 +1,73 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Star from "./Star";
 
 export default function SingleProduct({ singleProduct, loading }) {
   const [count, setCount] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [variationsValues, setVariationValues] = useState([]);
+  const [buttonText, setButtonText] = useState("");
+  const [price, setPrice] = useState(0);
+  const [matchedVariationPrice,setmMtchedVariationPrice]=useState('')
+
+  var settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 3,
+  };
+
+  const variations =
+    singleProduct?.has_variation == 1 &&
+    singleProduct?.product_variation?.length > 0
+      ? singleProduct.product_variation
+      : [];
+
+  const variationValuess =
+    variations.length > 0 ? variations[0]?.variaton_values || "" : "";
+  const variationValuesArray = variationValuess
+    .split(",")
+    .map((val) => val.trim());
+
+  const priceRange =
+    singleProduct?.has_variation == 1 &&
+    Array.isArray(singleProduct?.variation_combinations)
+      ? singleProduct.variation_combinations.map(
+          (variation) => variation?.price
+        )
+      : [];
+
+  const min_price = priceRange.length > 0 ? Math.min(...priceRange) : 0;
+  const max_price = priceRange.length > 0 ? Math.max(...priceRange) : 0;
+
+  useEffect(() => {
+    setMinPrice(min_price);
+    setMaxPrice(max_price);
+    setVariationValues(variationValuesArray);
+  }, [min_price, max_price]);
+
+const handleClick = (event) => {
+  const clickedText = event.target.textContent;
+  setButtonText(clickedText); // Update the button text state
+
+  const variation_combinations =
+    singleProduct?.has_variation == 1 &&
+    singleProduct?.variation_combinations?.length > 0
+      ? singleProduct.variation_combinations
+      : [];
+
+  // Find matched variation using the clicked text directly
+  const matched_variation = variation_combinations.find(
+    (vc) => vc.values === clickedText
+  );
+
+  const matched_variation_price = matched_variation?.price || "N/A"; // Handle undefined case
+  setmMtchedVariationPrice(matched_variation_price);
+};
+
   return (
     <>
       {loading ? (
@@ -12,14 +75,34 @@ export default function SingleProduct({ singleProduct, loading }) {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-center mb-5">
+        <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
           <img
             className="w-[397px] h-[397px]"
             src={`https://pub-c053b04a208d402dac06392a3df4fd32.r2.dev/15/image/${singleProduct?.image}`}
             alt=""
           />
           <div className="flex flex-col">
-            <h3 className="text-md font-semibold">{singleProduct?.name}</h3>
+            <div className="flex items-start justify-evenly gap-3">
+              <h3 className="text-md font-semibold">{singleProduct?.name || ""} </h3>
+              <h3 className="text-md font-semibold">BDT {matchedVariationPrice}</h3>
+              <div className="w-full sm:w-[300px] md:w-[400px] lg:w-[500px] ml-[50px] ">
+                {" "}
+                {/* Increase width on larger screens */}
+                <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
+                  {Array.isArray(variationsValues) &&
+                    variationsValues.map((variation, index) => (
+                      <button
+                        key={index}
+                        onClick={handleClick}
+                        className="bg-gray-300 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
+                      >
+                        {variation}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            </div>
+
             <div className="flex gap-3 mt-3">
               <div className="flex gap-1">
                 <Star />
@@ -32,9 +115,11 @@ export default function SingleProduct({ singleProduct, loading }) {
               <p className="text-sm">Write a review</p>
             </div>
             <p className="text-sm mt-3">{singleProduct?.short_desc}</p>
-            <div className="flex flex-col mt-5">{/* variations */}</div>
+
             <hr className="mt-5 mb-5" />
-            <h2 className="text-lg font-semibold">${singleProduct?.price}</h2>
+            <h2 className="text-lg font-semibold">
+              {priceRange.length > 0 && `BDT ${minPrice} to ${maxPrice}`}
+            </h2>
             <div className="mt-3 flex flex-col">
               <p className="text-sm">Quantity:</p>
               <div className="flex items-center gap-3 mt-2">

@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
             {product?.name}
           </h2>
           <p className="text-gray-600 text-sm p-1 text-center">
-            {product?.short_desc?.slice(0, 100)}
+            {product?.short_desc?.slice(0, 100)}...See more
           </p>
 
           {isHovered && (
