@@ -10,7 +10,9 @@ export default function SingleProduct({ singleProduct, loading }) {
   const [variationsValues, setVariationValues] = useState([]);
   const [buttonText, setButtonText] = useState("");
   const [price, setPrice] = useState(0);
-  const [matchedVariationPrice,setmMtchedVariationPrice]=useState('')
+  const [matchedVariationPrice, setmMtchedVariationPrice] = useState("");
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [actualPrice, setActualPrice] = useState(0);
 
   var settings = {
     infinite: false,
@@ -49,24 +51,38 @@ export default function SingleProduct({ singleProduct, loading }) {
     setVariationValues(variationValuesArray);
   }, [min_price, max_price]);
 
-const handleClick = (event) => {
-  const clickedText = event.target.textContent;
-  setButtonText(clickedText); // Update the button text state
+  const handleClick = (event) => {
+    const clickedText = event.target.textContent;
+    setButtonText(clickedText);
 
-  const variation_combinations =
-    singleProduct?.has_variation == 1 &&
-    singleProduct?.variation_combinations?.length > 0
-      ? singleProduct.variation_combinations
-      : [];
+    const variation_combinations =
+      singleProduct?.has_variation == 1 &&
+      singleProduct?.variation_combinations?.length > 0
+        ? singleProduct.variation_combinations
+        : [];
 
-  // Find matched variation using the clicked text directly
-  const matched_variation = variation_combinations.find(
-    (vc) => vc.values === clickedText
-  );
+    const matched_variation = variation_combinations.find(
+      (vc) => vc.values === clickedText
+    );
 
-  const matched_variation_price = matched_variation?.price || "N/A"; // Handle undefined case
-  setmMtchedVariationPrice(matched_variation_price);
-};
+    if (matched_variation) {
+      setmMtchedVariationPrice(matched_variation.price || "N/A");
+      setDiscountAmount(
+        matched_variation?.discount_percent !== 0
+          ? matched_variation.discount_percent
+          : 0
+      );
+    }
+  };
+
+  // useEffect to update actualPrice when matchedVariationPrice or discountAmount changes
+  useEffect(() => {
+    const calculatedPrice =
+      Number(matchedVariationPrice) -
+      Number(matchedVariationPrice * (discountAmount / 100));
+
+    setActualPrice(calculatedPrice);
+  }, [matchedVariationPrice, discountAmount]);
 
   return (
     <>
@@ -83,8 +99,16 @@ const handleClick = (event) => {
           />
           <div className="flex flex-col">
             <div className="flex items-start justify-evenly gap-3">
-              <h3 className="text-md font-semibold">{singleProduct?.name || ""} </h3>
-              <h3 className="text-md font-semibold">BDT {matchedVariationPrice}</h3>
+              <h3 className="text-md font-semibold">
+                {singleProduct?.name || ""}{" "}
+              </h3>
+              <h3 className="text-md font-semibold">BDT {actualPrice}</h3>
+              <h3 className="text-md font-semibold line-through">
+                {discountAmount == 0 ? "" : matchedVariationPrice}
+              </h3>
+              <h3 className="text-md font-semibold">
+                {discountAmount == 0 ? "" : `Save ${discountAmount} %`}
+              </h3>
               <div className="w-full sm:w-[300px] md:w-[400px] lg:w-[500px] ml-[50px] ">
                 {" "}
                 {/* Increase width on larger screens */}
@@ -94,7 +118,7 @@ const handleClick = (event) => {
                       <button
                         key={index}
                         onClick={handleClick}
-                        className="bg-gray-300 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
+                        className="bg-gray-200 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
                       >
                         {variation}
                       </button>
