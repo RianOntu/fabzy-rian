@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useParams, usePathname } from "next/navigation";
 import Footer from "@/app/components/Footer";
 import Navbar from "@/app/components/Navbar";
@@ -30,14 +30,18 @@ export default function page() {
     setLoading(true);
     // Fetch all products
     axios
-      .get(`https://glore-bd-backend-node-mongo.vercel.app/api/product`)
+      .get(`https://admin.ezicalc.com/api/public/products/get/15`)
       .then((response) => {
-        const products = response?.data?.data;
+        const products = response?.data?.data?.data;
+         setLoading(false);
+        console.log("products", products);
+
         setAllProducts(products); // Set all products
 
         // Find the single product by ID
-        const product = products.find((product) => product._id === id);
+        const product = products.find((product) => product.id == id);
         if (!product) {
+          setLoading(false);
           return null;
         }
         setSingleProduct(product); // Set the single product

@@ -5,9 +5,13 @@ import SliderSection from "./common/SliderSection";
 export default function Featured() {
   const [clothes, setClothes] = useState([]);
   useEffect(() => {
-    axios
-      .get(`https://glore-bd-backend-node-mongo.vercel.app/api/product`)
-      .then((data) => setClothes(data?.data?.data));
+    try {
+      axios
+        .get(`https://admin.ezicalc.com/api/public/products/get/15`)
+        .then((data) => setClothes(data?.data?.data?.data));
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (

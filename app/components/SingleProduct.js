@@ -15,7 +15,7 @@ export default function SingleProduct({ singleProduct, loading }) {
         <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-center mb-5">
           <img
             className="w-[397px] h-[397px]"
-            src="https://cdn11.bigcommerce.com/s-12ea9/images/stencil/1280x1280/products/27/228/21__77186.1518852172.jpg?c=2"
+            src={`https://pub-c053b04a208d402dac06392a3df4fd32.r2.dev/15/image/${singleProduct?.image}`}
             alt=""
           />
           <div className="flex flex-col">
@@ -31,21 +31,8 @@ export default function SingleProduct({ singleProduct, loading }) {
               <p className="text-sm">(No reviews yet)</p>
               <p className="text-sm">Write a review</p>
             </div>
-            <p className="text-sm mt-3">{singleProduct?.description}</p>
-            <div className="flex flex-col mt-5">
-              <div className="flex gap-10">
-                <p className="text-sm">SKU:</p>
-                <p className="text-sm text-[#CDA697]">APPLE-BLUE</p>
-              </div>
-              <div className="flex gap-10">
-                <p className="text-sm">SKU:</p>
-                <p className="text-sm text-[#CDA697]">APPLE-BLUE</p>
-              </div>
-              <div className="flex gap-10">
-                <p className="text-sm">SKU:</p>
-                <p className="text-sm text-[#CDA697]">APPLE-BLUE</p>
-              </div>
-            </div>
+            <p className="text-sm mt-3">{singleProduct?.short_desc}</p>
+            <div className="flex flex-col mt-5">{/* variations */}</div>
             <hr className="mt-5 mb-5" />
             <h2 className="text-lg font-semibold">${singleProduct?.price}</h2>
             <div className="mt-3 flex flex-col">

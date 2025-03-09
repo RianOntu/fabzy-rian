@@ -12,7 +12,6 @@ export default function SliderSection({ clothes = [] }) {
   }
 
   var settings = {
-    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -26,7 +25,6 @@ export default function SliderSection({ clothes = [] }) {
           slidesToScroll: 3,
           initialSlide: 3,
           infinite: true,
-          dots: true,
         },
       },
 
@@ -37,7 +35,6 @@ export default function SliderSection({ clothes = [] }) {
           slidesToScroll: 2,
           initialSlide: 2,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -47,7 +44,6 @@ export default function SliderSection({ clothes = [] }) {
           slidesToScroll: 2,
           initialSlide: 2,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -56,7 +52,6 @@ export default function SliderSection({ clothes = [] }) {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
     ],
@@ -67,7 +62,7 @@ export default function SliderSection({ clothes = [] }) {
       {clothes.length > 0 ? (
         <Slider {...settings}>
           {clothes.map((clothe) => (
-            <div key={clothe._id} className="p-2">
+            <div key={clothe.id} className="p-2">
               {" "}
               {/* Add padding for better spacing */}
               <ProductCard product={clothe} />

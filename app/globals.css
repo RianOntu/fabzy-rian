@@ -44,13 +44,13 @@ body {
   font-family: Montserrat, Arial, Helvetica, sans-serif !important;
   max-width: 100vw;
 }
-
+/* 
 .swiper-slide-active {
   width: 100vw !important;
 }
 .swiper-wrapper {
   width: 100vw !important;
-}
+} */
 
 .paralax {
   /* The image used */
@@ -80,12 +80,12 @@ body {
   background-size: cover;
   max-width: 100%;
 }
-.swiper {
+/* .swiper {
   max-width: 100vw !important;
 
   position: relative !important;
   top: -39px !important;
-}
+} */
 
 #shadow {
   position: absolute;
@@ -118,7 +118,7 @@ body {
   transition: transform 0.6s ease, opacity 0.3s ease;
 }
 .margin_left {
-  margin-left: 49px!important;
+  margin-left: 49px !important;
 }
 
 .img_hover:hover .overlay {
