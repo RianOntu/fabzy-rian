@@ -25,11 +25,11 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product, selectedVariation, quantity) => {
-    console.log("Product Variations:", product.variation_combinations);
+    console.log("Product Variations:", product?.selectedVariation?.values);
     console.log("Selected Variation:", selectedVariation);
 
-    const selectedVariationDetails = product.variation_combinations.find(
-      (variation) => variation.values.includes(selectedVariation.values)
+    const selectedVariationDetails = product?.variation_combinations?.find(
+      (variation) => variation?.values?.includes(selectedVariation?.values)
     );
 
     if (!selectedVariationDetails) {
@@ -41,11 +41,11 @@ export const CartProvider = ({ children }) => {
 
     const existingItemIndex = cart.findIndex(
       (item) =>
-        item.id === product.id && item.selectedVariation === selectedVariation
+        item?.id == product?.id && item.selectedVariation?.values == selectedVariation
     );
 
     let updatedCart;
-    if (existingItemIndex !== -1) {
+    if (existingItemIndex != -1) {
       updatedCart = [...cart];
       updatedCart[existingItemIndex].quantity += quantity;
       toast.success("🦄 Item added to cart!", {
@@ -92,7 +92,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = (productId, selectedVariation) => {
     const updatedCart = cart.filter(
       (item) =>
-        !(item.id === productId && item.selectedVariation === selectedVariation)
+        !(item.id == productId && item.selectedVariation == selectedVariation)
     );
 
     setCart(updatedCart);
@@ -101,7 +101,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     // Sync cart with localStorage whenever the cart changes
-    if (cart.length === 0) {
+    if (cart.length == 0) {
       localStorage.removeItem("cart"); // Remove cart if empty
     } else {
       saveCartToLocalStorage(cart);

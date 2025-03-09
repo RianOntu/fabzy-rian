@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "./context/CartContext";
-import { ToastContainer } from "react-toastify";
+import ClientOnlyToast from "./components/ClientOnlyToast"; // Import the client-only toast
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,31 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        
-        />
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          {children}
+          <ClientOnlyToast />
+        </CartProvider>
       </body>
     </html>
   );
