@@ -122,11 +122,11 @@ export default function SingleProduct({ singleProduct, loading }) {
               src={selectedImage}
               alt=""
             />
-            <div className="grid grid-cols-3 md:grid-cols-9 mt-5 gap-1">
+            <div className="grid grid-cols-3 md:grid-cols-5 mt-5 gap-1">
               {singleProduct?.product_images?.map((image, index) => (
                 <img
                   key={index}
-                  className="w-[90px] h-[80px] object-cover cursor-pointer"
+                  className="w-full h-full object-cover cursor-pointer"
                   src={`${VITE_API_BASE_URL_IMG}/${image?.name}`}
                   alt={`Product Thumbnail ${index}`}
                   onClick={() =>
@@ -168,7 +168,7 @@ export default function SingleProduct({ singleProduct, loading }) {
                         <button
                           key={index}
                           onClick={handleClick}
-                          className="bg-gray-200 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
+                          className="bg-gray-200 focus:bg-[#976797] hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
                         >
                           {variation}
                         </button>
@@ -189,7 +189,11 @@ export default function SingleProduct({ singleProduct, loading }) {
               <p className="text-sm">(No reviews yet)</p>
               <p className="text-sm">Write a review</p>
             </div>
-            <p className="text-sm mt-3">{singleProduct?.short_desc}</p>
+            <div className="flex flex-col md:flex-row items-start gap-3 mt-5 w-full  lg:w-[700px] ">
+            <h3 className="text-sm font-semibold">Description:</h3>
+            <p className="text-sm ">{singleProduct?.short_desc}</p>
+            </div>
+            
 
             <hr className="mt-5 mb-5" />
             <h2 className="text-lg font-semibold">

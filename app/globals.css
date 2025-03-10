@@ -28,12 +28,13 @@ body {
   -webkit-clip-path: polygon(0 100%, 0 0, 100% 0, 80% 100%);
 }
 .slick-arrow {
-  background-color: black!important;
+  background-color: black !important;
+  border-radius: 50% !important;
 }
-.small_image{
+.small_image {
   object-position: top center;
 }
-.main_image{
+.main_image {
   object-position: top center;
 }
 #content {

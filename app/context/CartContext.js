@@ -24,7 +24,6 @@ export const CartProvider = ({ children }) => {
         setData(fetchedData);
 
         // Get the ID from the URL params
-        console.log("id", id);
 
         if (!id) return; // Avoid running the logic if id is undefined
 
@@ -37,7 +36,7 @@ export const CartProvider = ({ children }) => {
         setProductsWithSimilarCategory(products_with_same_category);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, [productsWithSimilarCategory, category,data]);
+  }, [productsWithSimilarCategory, category, data]);
 
   const clearCart = () => {
     setCart([]); // Clear the cart state
@@ -67,6 +66,11 @@ export const CartProvider = ({ children }) => {
       toast.error("⚠️ Please select a variant before adding to cart!");
       return;
     }
+    if (selectedVariation.stock < 1) {
+      toast.error("❌ This product is out of stock!");
+      return;
+    }
+
     setCart((prevCart) => {
       const existingItemIndex = prevCart.findIndex(
         (item) =>
@@ -86,13 +90,13 @@ export const CartProvider = ({ children }) => {
         updatedCart = [
           ...prevCart,
           {
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            stock: product.stock,
+            id: product?.id,
+            name: product?.name,
+            price: product?.selectedVariation?.price,
+            stock: product?.selectedVariation?.stock,
             selectedVariation: selectedVariation,
             quantity: quantity,
-            image: product.image,
+            image: product?.image,
           },
         ];
       }

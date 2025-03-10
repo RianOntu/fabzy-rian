@@ -10,6 +10,9 @@ const CartPage = () => {
   const { removeFromCart, addToCart, clearCart } = useContext(CartContext);
   const { cart } = useCart();
 
+  useEffect(() => {
+    console.log("cart", cart);
+  }, [cart]);
   const handleIncrease = (item) => {
     addToCart(item, item.selectedVariation, 1);
   };
@@ -25,7 +28,13 @@ const CartPage = () => {
   };
 
   const getTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce(
+      (total, item) =>
+        total +
+        Number(item?.selectedVariation?.price) *
+          Number(item?.quantity),
+      0
+    );
   };
 
   return (
@@ -54,7 +63,11 @@ const CartPage = () => {
                   <p className="text-sm text-gray-500">
                     Variation: {item.selectedVariation.values}
                   </p>
-                  <p className="text-sm text-gray-500">Price: ${item.price}</p>
+                  <p className="text-sm text-gray-500">
+                    Price:BDT{" "}
+                    {Number(item?.selectedVariation?.price) *
+                      Number(item?.quantity)}
+                  </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <button
@@ -66,7 +79,7 @@ const CartPage = () => {
                   >
                     -
                   </button>
-                  <span className="text-lg">{item.quantity}</span>
+                  <span className="text-lg">{item?.quantity}</span>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -97,7 +110,7 @@ const CartPage = () => {
               Clear Cart
             </button>
             <div className="text-lg font-semibold">
-              <p>Total: ${getTotal()}</p>
+              <p>Total: BDT {getTotal()}</p>
               <button className="mt-4 px-6 py-2 bg-green-500 text-white rounded-lg">
                 Proceed to Checkout
               </button>
