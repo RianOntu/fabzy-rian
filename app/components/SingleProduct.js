@@ -5,8 +5,11 @@ import Star from "./Star";
 import { CartContext } from "../context/CartContext";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import VITE_API_BASE_URL_IMG from "../BaseImage";
+import axios from "axios";
+import { useParams } from "next/navigation";
 
 export default function SingleProduct({ singleProduct, loading }) {
+  const { id } = useParams();
   const [count, setCount] = useState(1);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
@@ -17,6 +20,16 @@ export default function SingleProduct({ singleProduct, loading }) {
   const [discountAmount, setDiscountAmount] = useState(0);
   const [actualPrice, setActualPrice] = useState(0);
   const [matchedVariation, setMatchedVariation] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
+ 
+
+  useEffect(() => {
+   
+
+    if (singleProduct?.image) {
+      setSelectedImage(`${VITE_API_BASE_URL_IMG}/${singleProduct?.image}`);
+    }
+  }, [singleProduct]);
 
   const { addToCart, cart, removeFromCart } = useContext(CartContext);
   console.log("cart", cart);
@@ -54,26 +67,37 @@ export default function SingleProduct({ singleProduct, loading }) {
   const handleClick = (event) => {
     const clickedText = event.target.textContent;
     setButtonText(clickedText);
-
+  
     const variation_combinations =
       singleProduct?.has_variation == 1 &&
       singleProduct?.variation_combinations?.length > 0
         ? singleProduct.variation_combinations
         : [];
-
+  
     const matched_variation = variation_combinations.find(
       (vc) => vc.values === clickedText
     );
     setMatchedVariation(matched_variation);
+  
     if (matched_variation) {
       setmMtchedVariationPrice(matched_variation.price || "N/A");
-      setDiscountAmount(
-        matched_variation?.discount_percent !== 0
-          ? matched_variation.discount_percent
-          : 0
-      );
+  
+      // Check if discount date is valid
+      const discountDate = matched_variation?.discount_date;
+      const today = new Date();
+  
+      if (discountDate && new Date(discountDate) >= today) {
+        setDiscountAmount(
+          matched_variation.discount_percent !== 0
+            ? matched_variation.discount_percent
+            : 0
+        );
+      } else {
+        setDiscountAmount(0); // No discount if date is null or expired
+      }
     }
   };
+  
 
   // useEffect to update actualPrice when matchedVariationPrice or discountAmount changes
   useEffect(() => {
@@ -91,22 +115,30 @@ export default function SingleProduct({ singleProduct, loading }) {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="mt-5 flex flex-col md:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
+        <div className="mt-5 flex flex-col xl:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
           <div className="flex flex-col w-full">
             <img
-              className="w-full h-full"
-              src={`${VITE_API_BASE_URL_IMG}/${singleProduct?.image}`}
+              className="w-full h-full main_image"
+              src={selectedImage}
               alt=""
             />
-            <div className="grid grid-cols-2 md:grid-cols-5 mt-5">
-              {singleProduct?.product_images?.map((image) => (
-                <img className="w-[90px] h-[80px] object-cover small_image" src={`${VITE_API_BASE_URL_IMG}/${image?.name}`} alt="" />
+            <div className="grid grid-cols-3 md:grid-cols-9 mt-5 gap-1">
+              {singleProduct?.product_images?.map((image, index) => (
+                <img
+                  key={index}
+                  className="w-[90px] h-[80px] object-cover cursor-pointer"
+                  src={`${VITE_API_BASE_URL_IMG}/${image?.name}`}
+                  alt={`Product Thumbnail ${index}`}
+                  onClick={() =>
+                    setSelectedImage(`${VITE_API_BASE_URL_IMG}/${image?.name}`)
+                  }
+                />
               ))}
             </div>
           </div>
 
           <div className="flex flex-col">
-            <div className="flex items-start justify-evenly gap-3">
+            <div className="flex flex-col md:flex-row items-start  gap-3">
               <h3 className="text-md font-semibold">
                 {singleProduct?.name || ""}{" "}
               </h3>
@@ -125,20 +157,23 @@ export default function SingleProduct({ singleProduct, loading }) {
               <h3 className="text-md font-semibold">
                 {discountAmount == 0 ? "" : `Save ${discountAmount} %`}
               </h3>
-              <div className="w-full sm:w-[300px] md:w-[400px] lg:w-[500px] ml-[50px] ">
+              <div className="w-full sm:w-[300px] md:w-[400px] lg:w-[500px]  ">
                 {" "}
                 {/* Increase width on larger screens */}
-                <div className="grid grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
-                  {Array.isArray(variationsValues) &&
-                    variationsValues.map((variation, index) => (
-                      <button
-                        key={index}
-                        onClick={handleClick}
-                        className="bg-gray-200 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
-                      >
-                        {variation}
-                      </button>
-                    ))}
+                <div className="flex flex-col md:flex-row gap-1">
+                  <h3 className="text-sm font-semibold">Variations:</h3>
+                  <div className="grid grid-cols-3 md:grid-cols-3 xl:grid-cols-4 gap-3 mx-auto">
+                    {Array.isArray(variationsValues) &&
+                      variationsValues.map((variation, index) => (
+                        <button
+                          key={index}
+                          onClick={handleClick}
+                          className="bg-gray-200 hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
+                        >
+                          {variation}
+                        </button>
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -165,7 +200,7 @@ export default function SingleProduct({ singleProduct, loading }) {
               <div className="flex items-center gap-3 mt-2">
                 <button
                   className="p-2 px-3 bg-[#976797]"
-                  onClick={() => setCount(count - 1)}
+                  onClick={() => setCount(count > 1 ? count - 1 : 1)}
                 >
                   <FaChevronDown className="text-white" />
                 </button>

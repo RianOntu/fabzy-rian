@@ -1,19 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
 import SliderSection from "./common/SliderSection";
+import { CartContext } from "../context/CartContext";
 export default function RelatedProductsRow() {
-  const [clothes, setClothes] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`https://glore-bd-backend-node-mongo.vercel.app/api/product`)
-      .then((data) => setClothes(data?.data?.data));
-  }, []);
+  const { productsWithSimilarCategory } = useContext(CartContext);
 
   return (
     <>
       <div className="w-[80%] 2xl:w-[50%] mx-auto mt-[90px]">
-        <SliderSection clothes={clothes} />
+        <SliderSection clothes={productsWithSimilarCategory} />
       </div>
     </>
   );

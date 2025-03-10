@@ -6,8 +6,8 @@ export default function NewArrival() {
   const [clothes, setClothes] = useState([]);
   useEffect(() => {
     axios
-      .get(`https://glore-bd-backend-node-mongo.vercel.app/api/product`)
-      .then((data) => setClothes(data?.data?.data));
+      .get(`https://admin.ezicalc.com/api/public/products/get/15`)
+      .then((data) => setClothes(data?.data?.data?.data));
   }, []);
 
   return (

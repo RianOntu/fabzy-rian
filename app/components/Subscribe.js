@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "./common/Input";
+import { FaTelegram } from "react-icons/fa6";
 
 export default function Subscribe() {
   return (
@@ -15,7 +16,8 @@ export default function Subscribe() {
           </div>
 
           <Input placeholder="Your email address">
-            <i class="fa-brands fa-telegram absolute right-[19px] top-[22px] text-[24px]"></i>
+          <FaTelegram className="absolute right-[19px] top-[22px] text-[24px]"/>
+           
           </Input>
         </div>
       </div>

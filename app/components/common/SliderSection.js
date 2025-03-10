@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function SliderSection({ clothes = [] }) {
+  console.log("clothes",clothes);
+  
   // Ensure clothes is an array to prevent errors
   if (!Array.isArray(clothes)) {
     return <p className="text-center text-white">Error loading products</p>;

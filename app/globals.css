@@ -33,6 +33,9 @@ body {
 .small_image{
   object-position: top center;
 }
+.main_image{
+  object-position: top center;
+}
 #content {
   width: 100%;
   height: 100%;
@@ -56,7 +59,29 @@ body {
 .swiper-wrapper {
   width: 100vw !important;
 } */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
 
+.scroll-to-top-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.scroll-to-top-button:hover {
+  background-color: #0056b3;
+}
 .paralax {
   /* The image used */
   background-image: url("/banner-1.jpg");

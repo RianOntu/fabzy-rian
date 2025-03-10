@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -9,6 +10,34 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const router = useRouter();
   const [cart, setCart] = useState([]);
+  const [data, setData] = useState([]);
+  const [category, setCategory] = useState(null);
+  const { id } = useParams();
+  const [productsWithSimilarCategory, setProductsWithSimilarCategory] =
+    useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`https://admin.ezicalc.com/api/public/products/get/15`)
+      .then((response) => {
+        const fetchedData = response?.data?.data?.data || [];
+        setData(fetchedData);
+
+        // Get the ID from the URL params
+        console.log("id", id);
+
+        if (!id) return; // Avoid running the logic if id is undefined
+
+        const singleData = fetchedData.find((d) => d.id == id);
+        setCategory(singleData?.category?.name);
+
+        const products_with_same_category = fetchedData.filter(
+          (d) => d?.category?.name == singleData?.category?.name && d?.id != id
+        );
+        setProductsWithSimilarCategory(products_with_same_category);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [productsWithSimilarCategory, category,data]);
 
   const clearCart = () => {
     setCart([]); // Clear the cart state
@@ -34,6 +63,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (product, selectedVariation, quantity) => {
+    if (!selectedVariation) {
+      toast.error("⚠️ Please select a variant before adding to cart!");
+      return;
+    }
     setCart((prevCart) => {
       const existingItemIndex = prevCart.findIndex(
         (item) =>
@@ -41,7 +74,7 @@ export const CartProvider = ({ children }) => {
           JSON.stringify(item.selectedVariation?.values) ===
             JSON.stringify(selectedVariation?.values)
       );
-  
+
       let updatedCart;
       if (existingItemIndex !== -1) {
         updatedCart = prevCart.map((item, index) =>
@@ -63,14 +96,14 @@ export const CartProvider = ({ children }) => {
           },
         ];
       }
-  
+
       saveCartToLocalStorage(updatedCart);
       return updatedCart;
     });
-  
+
     toast.success("🛒 Cart Updated!");
   };
-  
+
   const removeFromCart = (productId, selectedVariation) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.filter(
@@ -97,7 +130,15 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart,clearCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        productsWithSimilarCategory,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -92,7 +92,7 @@ const CartPage = () => {
           <div className="mt-8 flex justify-between items-center">
             <button
               onClick={() => clearCart()}
-              className="px-4 py-2 bg-red-400 text-white rounded-lg"
+              className="px-4 py-2 bg-red-500 text-white rounded-lg"
             >
               Clear Cart
             </button>

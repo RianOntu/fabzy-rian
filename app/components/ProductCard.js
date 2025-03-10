@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link href={`/shop/${product.id}`}>
       <div
-        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-[300px]  lg:w-[230px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div"
+        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-[300px]  md:w-[230px] xl:w-[270px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
