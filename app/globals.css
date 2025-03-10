@@ -51,6 +51,7 @@ html,
 body {
   font-family: Montserrat, Arial, Helvetica, sans-serif !important;
   max-width: 100vw;
+  background-color: white;
 }
 /* 
 .swiper-slide-active {
