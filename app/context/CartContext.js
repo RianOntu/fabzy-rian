@@ -95,7 +95,7 @@ export const CartProvider = ({ children }) => {
             price: product?.selectedVariation?.price,
             stock: product?.selectedVariation?.stock,
             selectedVariation: selectedVariation,
-            quantity: quantity,
+            quantity:quantity,
             image: product?.image,
           },
         ];

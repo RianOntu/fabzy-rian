@@ -21,11 +21,8 @@ export default function SingleProduct({ singleProduct, loading }) {
   const [actualPrice, setActualPrice] = useState(0);
   const [matchedVariation, setMatchedVariation] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
- 
 
   useEffect(() => {
-   
-
     if (singleProduct?.image) {
       setSelectedImage(`${VITE_API_BASE_URL_IMG}/${singleProduct?.image}`);
     }
@@ -67,25 +64,25 @@ export default function SingleProduct({ singleProduct, loading }) {
   const handleClick = (event) => {
     const clickedText = event.target.textContent;
     setButtonText(clickedText);
-  
+
     const variation_combinations =
       singleProduct?.has_variation == 1 &&
       singleProduct?.variation_combinations?.length > 0
         ? singleProduct.variation_combinations
         : [];
-  
+
     const matched_variation = variation_combinations.find(
       (vc) => vc.values === clickedText
     );
     setMatchedVariation(matched_variation);
-  
+
     if (matched_variation) {
       setmMtchedVariationPrice(matched_variation.price || "N/A");
-  
+
       // Check if discount date is valid
       const discountDate = matched_variation?.discount_date;
       const today = new Date();
-  
+
       if (discountDate && new Date(discountDate) >= today) {
         setDiscountAmount(
           matched_variation.discount_percent !== 0
@@ -97,7 +94,6 @@ export default function SingleProduct({ singleProduct, loading }) {
       }
     }
   };
-  
 
   // useEffect to update actualPrice when matchedVariationPrice or discountAmount changes
   useEffect(() => {
@@ -218,7 +214,9 @@ export default function SingleProduct({ singleProduct, loading }) {
               <div className="flex items-center gap-3 mt-5">
                 <button
                   className="p-2 px-3 bg-[#976797] text-white text-sm"
-                  onClick={() => addToCart(singleProduct, matchedVariation, 1)}
+                  onClick={() =>
+                    addToCart(singleProduct, matchedVariation, count)
+                  }
                 >
                   ADD TO CART
                 </button>
