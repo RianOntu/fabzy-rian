@@ -10,7 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body
+        className={` antialiased bg-white dark:bg-black text-black dark:text-white`}
+      >
         <CartProvider>
           {children}
           <ClientOnlyToast />
