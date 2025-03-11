@@ -5,7 +5,7 @@ export default function Blog() {
     <>
       <div className="w-[80%] mx-auto mt-[50px] mb-[50px] relative">
         <div className="flex">
-          <h1 className="text-md lg:text-4xl">
+          <h1 className="text-md text-black lg:text-4xl">
             Latest <b>Blog</b>
           </h1>
           <hr className="absolute w-[80%] top-[21px] left-0 md:left-[202px] h-[1px]" />

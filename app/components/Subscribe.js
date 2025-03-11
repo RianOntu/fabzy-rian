@@ -10,7 +10,7 @@ export default function Subscribe() {
         <div className="flex flex-col md:flex-row gap-3 items-center justify-center mt-[30px]">
           <div className="flex items-center">
             <i class="fa-solid fa-envelope text-[24px] mr-2"></i>
-            <h1 className="text-md md:text-2xl">
+            <h1 className="text-md text-black md:text-2xl">
               Subscribe <b>Us</b>
             </h1>
           </div>
