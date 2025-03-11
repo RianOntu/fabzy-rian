@@ -115,7 +115,7 @@ export default function SingleProduct({ singleProduct, loading }) {
           <p>Loading...</p>
         </div>
       ) : (
-        <div className="mt-5 flex flex-col xl:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
+        <div className="mt-5 flex flex-col lg:flex-row gap-4 w-[80%] mx-auto items-start mb-5">
           <div className="flex flex-col w-full">
             <img
               className="w-full h-full main_image"
@@ -137,8 +137,8 @@ export default function SingleProduct({ singleProduct, loading }) {
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <div className="flex flex-col md:flex-row items-start  gap-3">
+          <div className="flex flex-col  width">
+            <div className="flex flex-col  xl:flex-row items-start  gap-3">
               <h3 className="text-md font-semibold">
                 {singleProduct?.name || ""}{" "}
               </h3>
@@ -189,11 +189,10 @@ export default function SingleProduct({ singleProduct, loading }) {
               <p className="text-sm">(No reviews yet)</p>
               <p className="text-sm">Write a review</p>
             </div>
-            <div className="flex flex-col md:flex-row items-start gap-3 mt-5 w-full  lg:w-[700px] ">
-            <h3 className="text-sm font-semibold">Description:</h3>
-            <p className="text-sm ">{singleProduct?.short_desc}</p>
+            <div className="flex flex-col md:flex-row items-start gap-3 mt-5 w-full  lg:w-[500px] ">
+              <h3 className="text-sm font-semibold">Description:</h3>
+              <p className="text-sm ">{singleProduct?.short_desc}</p>
             </div>
-            
 
             <hr className="mt-5 mb-5" />
             <h2 className="text-lg font-semibold">

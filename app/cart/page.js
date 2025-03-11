@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Subscribe from "../components/Subscribe";
 import Footer from "../components/Footer";
 import VITE_API_BASE_URL_IMG from "../BaseImage";
+import Link from "next/link";
 
 const CartPage = () => {
   const { removeFromCart, addToCart, clearCart } = useContext(CartContext);
@@ -111,9 +112,9 @@ const CartPage = () => {
             </button>
             <div className="text-lg font-semibold">
               <p>Total: BDT {getTotal()}</p>
-              <button className="mt-4 px-6 py-2 bg-green-500 text-white rounded-lg">
+              <Link href="/checkout" className="mt-4 px-6 py-2 bg-green-500 text-white rounded-lg">
                 Proceed to Checkout
-              </button>
+              </Link>
             </div>
           </div>
         )}
