@@ -13,10 +13,8 @@
     --foreground: #ededed;
   }
 }
-h1,
-p,
-h3 {
-  color: black !important;
+input {
+  background-color: #f7f7f7!important;
 }
 
 body {

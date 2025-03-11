@@ -14,7 +14,7 @@ function ClientReviews() {
         <Heading>
           Client <b>Reviews</b>
         </Heading>
-        <div className="w-full  mx-auto mt-[160px]">
+        <div className="w-full  mx-auto mt-[50px]">
           <Swiper
             className="w-full "
             style={{ width: "100%" }}
