@@ -162,13 +162,13 @@ export default function SingleProduct({ singleProduct, loading }) {
                 {/* Increase width on larger screens */}
                 <div className="flex flex-col md:flex-row gap-1">
                   <h3 className="text-sm font-semibold">Variations:</h3>
-                  <div className="grid grid-cols-3 md:grid-cols-3 xl:grid-cols-4 gap-3 mx-auto">
+                  <div className="grid grid-cols-3   gap-3 mx-auto">
                     {Array.isArray(variationsValues) &&
                       variationsValues.map((variation, index) => (
                         <button
                           key={index}
                           onClick={handleClick}
-                          className="bg-gray-200 focus:bg-[#976797] hover:bg-[#976797] text-black w-[100px] text-sm p-2 px-3 rounded-sm"
+                          className="bg-gray-200 focus:bg-[#976797] hover:bg-[#976797] text-black w-[85px] text-sm p-1  rounded-sm"
                         >
                           {variation}
                         </button>
