@@ -13,6 +13,11 @@
     --foreground: #ededed;
   }
 }
+h1,
+p,
+h3 {
+  color: black !important;
+}
 
 body {
   color: var(--foreground);
