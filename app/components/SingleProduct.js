@@ -217,7 +217,7 @@ export default function SingleProduct({ singleProduct, loading }) {
                 <button
                   className="p-2 px-3 bg-[#976797] text-white text-sm"
                   onClick={() =>
-                    addToCart(singleProduct, matchedVariation, count)
+                    addToCart(singleProduct, matchedVariation, count,actualPrice)
                   }
                 >
                   ADD TO CART

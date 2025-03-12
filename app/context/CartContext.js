@@ -61,7 +61,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const addToCart = (product, selectedVariation, quantity) => {
+  const addToCart = (product, selectedVariation, quantity, actualPrice) => {
     if (!selectedVariation) {
       toast.error("⚠️ Please select a variant before adding to cart!");
       return;
@@ -92,10 +92,10 @@ export const CartProvider = ({ children }) => {
           {
             id: product?.id,
             name: product?.name,
-            price: product?.selectedVariation?.price,
+            price: actualPrice,
             stock: product?.selectedVariation?.stock,
             selectedVariation: selectedVariation,
-            quantity:quantity,
+            quantity: quantity,
             image: product?.image,
           },
         ];

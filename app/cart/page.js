@@ -16,6 +16,7 @@ const CartPage = () => {
   }, [cart]);
   const handleIncrease = (item) => {
     addToCart(item, item.selectedVariation, 1);
+    console.log("item", item);
   };
 
   const handleDecrease = (item) => {
@@ -30,8 +31,7 @@ const CartPage = () => {
 
   const getTotal = () => {
     return cart.reduce(
-      (total, item) =>
-        total + Number(item?.selectedVariation?.price) * Number(item?.quantity),
+      (total, item) => total + Number(item?.price) * Number(item?.quantity),
       0
     );
   };
@@ -63,9 +63,7 @@ const CartPage = () => {
                     Variation: {item.selectedVariation.values}
                   </p>
                   <p className="text-sm text-gray-500">
-                    Price:BDT{" "}
-                    {Number(item?.selectedVariation?.price) *
-                      Number(item?.quantity)}
+                    Price:BDT {Number(item?.price) * Number(item?.quantity)}
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -120,7 +118,6 @@ const CartPage = () => {
           </div>
         )}
       </div>
-     
     </>
   );
 };
