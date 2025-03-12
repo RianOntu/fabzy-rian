@@ -5,14 +5,14 @@ export default function Footer() {
     <>
       <div className="flex border-t-[0.5px] flex-col lg:flex-row justify-center">
         <div className="flex flex-col md:flex-row">
-          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px] lg:w-[200px]">
+          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-full lg:w-[200px]">
             <img src="/logo_footer.webp" alt="" />
             <p className="text-xs mt-4">Lorem ipsum</p>
             <p className="text-xs mt-2">Lorem ipsum</p>
             <p className="text-xs mt-2">Lorem ipsum</p>
             <p className="text-xs mt-2">Lorem ipsum</p>
           </div>
-          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px] lg:w-[200px]">
+          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-full lg:w-[200px]">
             <h1 className="text-md font-bold">NAVIGATE</h1>
             <p className="text-xs mt-4 flex gap-2">
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
@@ -30,7 +30,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row">
-          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-[400px] lg:w-[200px]">
+          <div className="flex flex-col border-r-[0.5px] p-8 px-12 w-full lg:w-[200px]">
             <h1 className="text-md font-bold">CATEGORIES</h1>
             <p className="text-xs mt-4 flex gap-2 items-center">
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
@@ -45,7 +45,7 @@ export default function Footer() {
               <i class="fa-solid fa-arrow-right-long"></i>Lorem ipsum
             </p>
           </div>
-          <div className="flex flex-col  p-8 px-12 w-[400px] lg:w-[200px]">
+          <div className="flex flex-col  p-8 px-12 w-full lg:w-[200px]">
             <h1 className="text-md font-bold">INFORMATION</h1>
             <p className="text-xs mt-4 flex gap-2 items-center">
               <i class="fa-solid fa-location-dot text-[#976797]"></i>33 New
