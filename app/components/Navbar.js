@@ -66,7 +66,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="sticky top-0 z-50 bg-white">
+      <div className="sticky top-0 z-50 bg-white border-b-[0.5px] md:border-b-0">
         <div className=" flex justify-between items-center h-[120px]  w-[200px]  md:w-full">
           {/* Logo Section */}
           <div id="box" className="w-[20rem] shadow ">
@@ -88,7 +88,7 @@ function Navbar() {
           >
             {isOpen !== true && <FaBars />}
           </button>
-          <div className="hidden xl:flex relative  items-center justify-between w-full">
+          <div className="hidden xl:flex relative   items-center justify-between w-full">
             <div className="w-[500px] h-[120px]">
               <nav className="ml-10 flex space-x-8 text-black font-medium navbar mt-10">
                 <div
@@ -314,7 +314,9 @@ function Navbar() {
                       <div className="flex items-center">
                         <FaCartArrowDown className="text-lg " />
                         <div className="flex flex-col p-4">
-                          <Link href="/cart" className="text-[12px]">VIEW CART</Link>
+                          <Link href="/cart" className="text-[12px]">
+                            VIEW CART
+                          </Link>
                           <p className="text-[#5C5C5C] text-[10px]">
                             {cart.length}
                           </p>

@@ -10,6 +10,7 @@ import Link from "next/link";
 import RelatedProducts from "@/app/components/RelatedProducts";
 import RelatedProductsRow from "@/app/components/RelatedProductsRow";
 import { FaHome } from "react-icons/fa"; // Import the home icon
+import ScrollToTopButton from "@/app/components/ScrollToTop";
 
 export default function page() {
   const [singleProduct, setSingleProduct] = useState({});
@@ -56,6 +57,7 @@ export default function page() {
   return (
     <>
       <Navbar />
+      <ScrollToTopButton />
       <div className="p-6 bg-[#F7F7F7] relative top-[1px]">
         <div className="flex flex-col justify-center">
           <h3 className="text-lg font-bold uppercase text-center">
