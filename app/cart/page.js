@@ -31,9 +31,7 @@ const CartPage = () => {
   const getTotal = () => {
     return cart.reduce(
       (total, item) =>
-        total +
-        Number(item?.selectedVariation?.price) *
-          Number(item?.quantity),
+        total + Number(item?.selectedVariation?.price) * Number(item?.quantity),
       0
     );
   };
@@ -103,24 +101,26 @@ const CartPage = () => {
         )}
 
         {cart.length > 0 && (
-          <div className="mt-8 flex justify-between items-center">
+          <div className="mt-8 flex flex-col md:flex-row mx-auto justify-between items-center">
             <button
               onClick={() => clearCart()}
               className="px-4 py-2 bg-red-500 text-white rounded-lg"
             >
               Clear Cart
             </button>
-            <div className="text-lg font-semibold">
-              <p>Total: BDT {getTotal()}</p>
-              <Link href="/checkout" className="mt-4 px-6 py-2 bg-green-500 text-white rounded-lg">
+            <div className="text-lg font-semibold mt-5 md:mt-0 text-center">
+              <p className="mb-[10px]">Total: BDT {getTotal()}</p>
+              <Link
+                href="/checkout"
+                className="px-6 py-2 bg-green-500 text-white rounded-lg"
+              >
                 Proceed to Checkout
               </Link>
             </div>
           </div>
         )}
       </div>
-      <Subscribe />
-      <Footer />
+     
     </>
   );
 };

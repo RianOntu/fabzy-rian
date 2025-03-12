@@ -9,12 +9,12 @@ const ProductCard = ({ product }) => {
   return (
     <Link href={`/shop/${product.id}`}>
       <div
-        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-[300px]  md:w-[230px] xl:w-[270px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div"
+        className="bg-[#FFFFFF] relative overflow-hidden h-[388px] shadow-md w-[300px]  md:w-[230px] xl:w-[270px] rounded-lg mx-auto hover:shadow-lg transition duration-500 product_div margin_bottom"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Image Wrapper */}
-        <div className="relative h-60 w-full overflow-hidden">
+        <div className="relative h-60 w-full overflow-hidden ">
           <img
             src={`${VITE_API_BASE_URL_IMG}/${product?.image}`}
             alt={product?.name}
@@ -29,13 +29,13 @@ const ProductCard = ({ product }) => {
             }`}
           >
             <button className="text-white text-sm bg-[#976797] p-2">
-            <FaHeart className="text-white"/>
+              <FaHeart className="text-white" />
             </button>
             <button className="text-white text-sm bg-[#976797] p-2 mt-2">
-            <FaEye className="text-white"/>
+              <FaEye className="text-white" />
             </button>
             <button className="text-white text-sm bg-[#976797] p-2 mt-2">
-            <FaPaste className="text-white" />
+              <FaPaste className="text-white" />
             </button>
           </div>
         </div>

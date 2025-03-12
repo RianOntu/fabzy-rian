@@ -66,7 +66,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="sticky top-0 z-50 bg-white border-b-[0.5px] md:border-b-0">
+      <div className="sticky top-0 z-50 bg-white lg:border-b-[0.5px] border-b-0">
         <div className=" flex justify-between items-center h-[120px]  w-[200px]  md:w-full">
           {/* Logo Section */}
           <div id="box" className="w-[20rem] shadow ">
@@ -82,11 +82,24 @@ function Navbar() {
           </div>
 
           {/* Navigation Menu */}
+
+          <Link
+            href="/cart"
+            className="relative flex lg:hidden right-[-60%] md:right-[32px] top-[1px]"
+          >
+            <FaCartArrowDown className="text-lg " />
+            <h1 className="absolute text-white bg-red-600 w-[20px] [h-10px] rounded-full left-[19px] top-[-20px]">
+              <span className="top-[1px] left-[5px] relative">
+                {cart.length}
+              </span>
+            </h1>
+          </Link>
+
           <button
             className="block xl:hidden text-black text-2xl relative right-[-74%] md:right-[32px] top-[1px]"
             onClick={toggleMenu}
           >
-            {isOpen !== true && <FaBars />}
+            {isOpen !== true ? <FaBars /> : <FaTimes />}
           </button>
           <div className="hidden xl:flex relative   items-center justify-between w-full">
             <div className="w-[500px] h-[120px]">
@@ -338,13 +351,13 @@ function Navbar() {
       {isOpen && (
         <div ref={sidebarRef} className="flex flex-col xl:hidden items-center">
           <div
-            className={`fixed top-0 left-0 max-w-[100vw] h-full bg-white shadow-lg z-50 transform ${
+            className={`fixed top-0 left-0 max-w-[100vw] h-full bg-white shadow-lg z-50 transform overflow-y-auto ${
               isOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out`}
           >
             {isOpen && (
               <FaTimes
-                className="flex justify-end absolute right-0 top-[19px]"
+                className="flex justify-end absolute right-[12px] top-[19px]"
                 onClick={() => setIsOpen(!isOpen)}
               />
             )}

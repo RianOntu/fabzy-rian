@@ -96,7 +96,7 @@ export default function page() {
       <div className="w-[80%] mx-auto mt-[5.25rem]">
         <div className="p-6 bg-[#F7F7F7] relative top-[-40px]">
           <button className="bg-white p-3 px-5">DESCRIPTION</button>
-          <h3 className="text-md font-medium mt-5">
+          <h3 className="text-md font-medium mt-5 text-justify">
             {singleProduct?.short_desc}
           </h3>
         </div>

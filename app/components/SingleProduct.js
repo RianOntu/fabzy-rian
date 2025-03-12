@@ -187,7 +187,9 @@ export default function SingleProduct({ singleProduct, loading }) {
             </div>
             <div className="flex flex-col md:flex-row items-start gap-3 mt-5 w-full  lg:w-[500px] ">
               <h3 className="text-sm font-semibold">Description:</h3>
-              <p className="text-sm ">{singleProduct?.short_desc}</p>
+              <p className="text-sm text-justify">
+                {singleProduct?.short_desc}
+              </p>
             </div>
 
             <hr className="mt-5 mb-5" />

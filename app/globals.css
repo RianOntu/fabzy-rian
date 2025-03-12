@@ -14,7 +14,7 @@
   }
 }
 input {
-  background-color: #f7f7f7!important;
+  background-color: #f7f7f7 !important;
 }
 
 body {
@@ -163,6 +163,9 @@ body {
 #content {
   height: 120px !important;
 }
+.margin_bottom {
+  margin-bottom: 64px !important;
+}
 .dropdown {
   position: absolute;
   top: 15px; /* Positions the dropdown below the link */
@@ -177,9 +180,9 @@ body {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
-.width{
-width: 500px!important;
-}
+  .width {
+    width: 500px !important;
+  }
 }
 @media only screen and (min-width: 344px) and (max-width: 767px) {
   .swiper {

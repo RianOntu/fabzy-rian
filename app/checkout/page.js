@@ -146,8 +146,6 @@ const CheckoutPage = () => {
           </div>
         </div>
       </div>
-      <Subscribe />
-      <Footer />
     </>
   );
 };
